@@ -19,6 +19,13 @@ var SHEET_NAME = 'Leads';
 // this script. Add more addresses separated by commas, e.g. 'a@x.com,b@x.com'.
 var NOTIFY_EMAILS = '';
 
+// Address the notification appears to come from. It must be set up as a
+// "Send mail as" alias in the Gmail account that owns this script (Gmail →
+// Settings → Accounts → Send mail as). If it isn't, the email is still sent,
+// from the owner's own address, so no lead notification is ever lost.
+var FROM_EMAIL = 'submissions@medient.co.uk';
+var FROM_NAME = 'Medient website';
+
 // Columns, in order, for a brand-new tab. If the tab already has a header row,
 // the script matches fields to your existing headers by name instead, so you
 // can reorder, rename to these names, or add your own columns freely.
@@ -111,9 +118,12 @@ function sendEmail_(d, when) {
     }).join('') + '</table>';
   var text = rows.map(function (r) { return r[0] + ': ' + r[1]; }).join('\n');
 
-  var opts = { htmlBody: html, name: 'Medient website' };
+  var opts = { htmlBody: html, name: FROM_NAME };
   if (d.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) opts.replyTo = d.email;
-  MailApp.sendEmail(to, subject, text, opts);
+  var aliases = GmailApp.getAliases().map(function (a) { return a.toLowerCase(); });
+  if (FROM_EMAIL && aliases.indexOf(FROM_EMAIL.toLowerCase()) !== -1) opts.from = FROM_EMAIL;
+  else console.warn(FROM_EMAIL + ' is not a Send-mail-as alias yet; sending from the owner address.');
+  GmailApp.sendEmail(to, subject, text, opts);
 }
 
 function esc_(s) {
