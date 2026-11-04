@@ -136,3 +136,10 @@ function json_(obj) {
   return ContentService.createTextOutput(JSON.stringify(obj))
     .setMimeType(ContentService.MimeType.JSON);
 }
+
+// Run this once from the editor (select "authorize" next to Run) to grant the
+// Gmail permission the notification email needs. It also lists the
+// Send-mail-as aliases Gmail sees, so you can check submissions@ is there.
+function authorize() {
+  console.log('Aliases: ' + JSON.stringify(GmailApp.getAliases()));
+}
