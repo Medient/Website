@@ -453,8 +453,8 @@ footer .credit a{color:#86A0AF;margin:0}
       <p class="sub" id="formSub"><b>⏱ 60 seconds.</b> 5 one-tap questions, then book your free consultation.</p>
       <div class="progress" aria-hidden="true"><span id="bar" style="width:20%"></span></div>
       <div class="step-row"><p class="step-count" id="stepCount">Question 1 of 5</p><button type="button" class="btn-back" id="backBtn" hidden>← Back</button></div>
-      <form name="dentistry-enquiry" method="POST" action="/dentistry/thank-you" data-netlify="true" netlify-honeypot="company" id="leadForm" novalidate>
-        <input type="hidden" name="form-name" value="dentistry-enquiry">
+      <!-- Submissions go to the Google Apps Script web app (see google-apps-script/Code.gs). Paste its /exec URL into action. -->
+      <form name="dentistry-enquiry" method="POST" action="PASTE_GOOGLE_SCRIPT_URL_HERE" data-thanks="/dentistry/thank-you" id="leadForm" novalidate>
         <p class="hidden"><label>Leave this empty: <input name="company"></label></p>
         <input type="hidden" name="course" value="Dentistry"><input type="hidden" name="lead_tier"><input type="hidden" name="lead_score">
         <input type="hidden" name="gclid"><input type="hidden" name="gbraid"><input type="hidden" name="wbraid"><input type="hidden" name="gad_source"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="landing_page">
@@ -903,8 +903,21 @@ footer .credit a{color:#86A0AF;margin:0}
     if(disqualified()){ e.preventDefault(); showDisqualified(); return; }
     var bad=[].filter.call(steps[last].querySelectorAll('input'),function(el){return !el.checkValidity()});
     if(bad.length){ e.preventDefault(); err.textContent='Please add your '+bad.map(function(el){return el.name==='name'?'first name':el.name==='phone'?'mobile number':'email'}).join(', ')+'.'; bad[0].focus(); return; }
+    e.preventDefault();
     var tier=score();
     try{sessionStorage.setItem('lp_lead',JSON.stringify({tier:tier,course:'Dentistry',country:(f.querySelector('input[name=country]:checked')||{}).value}))}catch(e){}
+    var thanks=f.dataset.thanks;
+    if(f.elements.company.value){ location.href=thanks; return; }
+    if(f.action.indexOf('https://script.google.com/')!==0){ err.textContent='The form isn\u2019t connected yet. Please message us on WhatsApp.'; return; }
+    var btn=f.querySelector('button[type=submit]'), label=btn.innerHTML;
+    btn.disabled=true; btn.textContent='Sending\u2026'; err.textContent='';
+    // no-cors: Google's reply can't be read cross-site, but the row is still saved. A network failure rejects and shows an error.
+    fetch(f.action,{method:'POST',mode:'no-cors',body:new URLSearchParams(new FormData(f))})
+      .then(function(){ location.href=thanks; })
+      .catch(function(){
+        btn.disabled=false; btn.innerHTML=label;
+        err.textContent='Sorry, that didn\u2019t send. Please check your connection and try again, or message us on WhatsApp.';
+      });
   });
 
   // Country cards preselect that country and move the visitor on to question 2.
