@@ -4,6 +4,9 @@
 - Medicine: https://medient.github.io/Website/medicine/
 - Dentistry: https://medient.github.io/Website/dentistry/
 
+**Redesign preview** (not linked from ads, hidden from search)
+- Medicine: https://medient.github.io/Website/preview/medicine/
+
 Static HTML site. No build step and no dependencies. Hosted on GitHub Pages from the `main` branch.
 
 | Path | Page |
