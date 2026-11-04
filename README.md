@@ -1,8 +1,8 @@
 # Medient website
 
 **Live pages**
-- Medicine: https://medient.github.io/Website/medicine/
-- Dentistry: https://medient.github.io/Website/dentistry/
+- Medicine: https://apply.medient.co.uk/medicine/
+- Dentistry: https://apply.medient.co.uk/dentistry/
 
 
 Static HTML site. No build step and no dependencies. Hosted on GitHub Pages from the `main` branch.
