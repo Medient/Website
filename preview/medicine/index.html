@@ -51,24 +51,24 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;font-family:Rubik,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:17px;line-height:1.65;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:Rubik,system-ui,-apple-system,"Segoe UI",sans-serif;font-size:16px;line-height:1.65;color:var(--text);background:var(--bg);-webkit-font-smoothing:antialiased}
 h1,h2,h3,h4{font-family:Rubik,system-ui,sans-serif;color:var(--petrol);line-height:1.1;margin:0 0 .5em;font-weight:600;letter-spacing:-.02em}
-h1{font-size:clamp(2.3rem,4.6vw,3.8rem);font-weight:600;letter-spacing:-.03em}
-h2{font-size:clamp(1.9rem,3.4vw,2.9rem)}
-h3{font-size:1.2rem;font-weight:500;letter-spacing:-.01em}
+h1{font-size:clamp(2rem,3.3vw,3rem);font-weight:600;letter-spacing:-.03em}
+h2{font-size:clamp(1.7rem,2.6vw,2.35rem)}
+h3{font-size:1.12rem;font-weight:500;letter-spacing:-.01em}
 p{margin:0 0 1em}
 a{color:var(--petrol)}
 img{max-width:100%;display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
-section{padding:120px 0;position:relative}
+section{padding:96px 0;position:relative}
 .label{display:inline-flex;align-items:center;gap:12px;font-size:.8rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--teal-text);margin:0 0 20px}
 .label::before{content:"";width:32px;height:2px;border-radius:2px;background:var(--teal)}
 .on-dark .label{color:var(--teal)}
-.lede{font-size:1.14rem;color:var(--muted);max-width:34em;font-weight:300}
+.lede{font-size:1.06rem;color:var(--muted);max-width:34em;font-weight:300}
 .on-dark{color:#C9DCE6}
 .on-dark h2,.on-dark h3{color:#fff}
 .on-dark .lede{color:#B9D0DC}
-.split-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:64px}
+.split-head{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:end;margin-bottom:48px}
 .split-head h2{margin:0}
 .split-head .lede{margin:0}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -108,41 +108,41 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .divider{display:block;width:100%;height:clamp(40px,6vw,90px);margin:-1px 0}
 
 /* Hero */
-.hero{position:relative;overflow:hidden;background:radial-gradient(900px 500px at 12% 0%,rgba(84,189,180,.22),transparent 65%),linear-gradient(160deg,var(--deeper) 0%,var(--deep) 45%,var(--petrol) 100%);color:#C9DCE6;padding:72px 0 150px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 500px at 12% 0%,rgba(84,189,180,.22),transparent 65%),linear-gradient(160deg,var(--deeper) 0%,var(--deep) 45%,var(--petrol) 100%);color:#C9DCE6;padding:52px 0 112px}
 .hero::after{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1758270705518-b61b40527e76?w=1600&q=60&auto=format&fit=crop") center/cover no-repeat;opacity:.12;mix-blend-mode:luminosity;pointer-events:none}
 .hero .wave-tr{top:0;right:0;width:min(680px,55vw);aspect-ratio:4/3;z-index:1}
 .hero .wave-tr .w1{fill:rgba(84,189,180,.9)}
 .hero .wave-tr .w2{fill:#0E4D6C}
 .hero .wrap{position:relative;z-index:2}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:72px;align-items:center}
-.hero .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.8rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#A9E2DC;margin-bottom:22px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.hero .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#A9E2DC;margin-bottom:16px}
 .hero .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(84,189,180,.22)}
-.hero h1{color:#fff;margin-bottom:22px}
+.hero h1{color:#fff;margin-bottom:16px}
 .hero h1 span{color:var(--teal);position:relative;display:inline-block}
 .hero h1 span svg{position:absolute;left:0;bottom:-.2em;width:100%;height:.3em;overflow:visible}
 .hero h1 span path{fill:none;stroke:var(--teal);stroke-width:5;stroke-linecap:round;opacity:.6;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.4s .6s var(--ease) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
-.hero .lede{color:#C3D7E1;font-size:1.16rem;margin-bottom:34px}
-.usps{list-style:none;margin:0 0 36px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px 28px;max-width:560px}
-.usps li{display:flex;align-items:center;gap:12px;color:#fff;font-weight:400}
-.usps svg{flex:none;width:24px;height:24px;padding:5px;border-radius:50%;background:rgba(84,189,180,.2);color:var(--teal)}
-.proof{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding-top:26px;border-top:1px solid rgba(255,255,255,.12)}
-.proof-rating{display:flex;align-items:center;gap:10px;font-size:.95rem}
+.hero .lede{color:#C3D7E1;font-size:1.04rem;margin-bottom:24px;max-width:31em}
+.usps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;max-width:540px}
+.usps li{display:flex;align-items:center;gap:10px;color:#fff;font-weight:400;font-size:.96rem}
+.usps svg{flex:none;width:22px;height:22px;padding:5px;border-radius:50%;background:rgba(84,189,180,.2);color:var(--teal)}
+.proof{display:flex;align-items:center;gap:22px;flex-wrap:wrap;padding-top:18px;border-top:1px solid rgba(255,255,255,.12)}
+.proof-rating{display:flex;align-items:center;gap:10px;font-size:.9rem}
 .proof-rating b{color:#fff;font-weight:500}
 .stars{color:var(--gold);letter-spacing:2px}
-.flags{display:flex;align-items:center;gap:6px;font-size:.92rem}
+.flags{display:flex;align-items:center;gap:6px;font-size:.88rem}
 .flags img{width:22px;height:auto;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.2)}
 .flags span{margin-left:6px}
 
 /* Form card */
-.form-card{position:relative;background:#fff;border-radius:var(--r-lg);padding:32px 30px 26px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;scroll-margin-top:100px;color:var(--text);animation:cardIn .9s .2s var(--ease) both}
+.form-card{position:relative;background:#fff;border-radius:20px;padding:24px 24px 20px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;scroll-margin-top:100px;color:var(--text);animation:cardIn .9s .2s var(--ease) both}
 @keyframes cardIn{from{opacity:0;transform:translateY(30px) scale(.98)}to{opacity:1;transform:none}}
-.form-card h2{font-size:1.5rem;margin:0 0 6px;letter-spacing:-.02em}
-.form-card .sub{font-size:.95rem;color:var(--muted);margin:0 0 18px}
+.form-card h2{font-size:1.28rem;margin:0 0 4px;letter-spacing:-.02em}
+.form-card .sub{font-size:.88rem;color:var(--muted);margin:0 0 14px}
 .form-card .sub b{display:inline-flex;align-items:center;gap:5px;color:var(--teal-text);font-weight:500}
 .form-card .sub b svg{width:15px;height:15px}
 .form-card.started #formSub,.form-card.is-final h2{display:none}
-.progress{height:6px;background:var(--tint);border-radius:99px;overflow:hidden;margin:4px 0 14px}
+.progress{height:5px;background:var(--tint);border-radius:99px;overflow:hidden;margin:2px 0 10px}
 .progress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--petrol));border-radius:99px;transition:width .5s var(--ease)}
 .step-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0 0 4px}
 .step-count{margin:0;font-size:.76rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -150,15 +150,15 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .qstep{border:0;padding:0;margin:0;display:none;min-width:0}
 .qstep.is-active{display:block;animation:stepIn .45s var(--ease)}
 @keyframes stepIn{from{opacity:0;transform:translateX(16px)}to{opacity:1;transform:none}}
-.qstep legend{font-weight:500;font-size:1.22rem;color:var(--petrol);margin:0 0 14px;padding:0;line-height:1.3;letter-spacing:-.01em}
+.qstep legend{font-weight:500;font-size:1.08rem;color:var(--petrol);margin:0 0 12px;padding:0;line-height:1.3;letter-spacing:-.01em}
 .hint{font-size:.92rem;color:var(--muted);margin:-6px 0 14px}
 .hint.small{font-size:.84rem;margin:14px 0 0}
-.choices{display:grid;gap:10px}
+.choices{display:grid;gap:8px}
 .choices.c2{grid-template-columns:1fr 1fr}
 .choices.c3{grid-template-columns:repeat(3,1fr)}
 .choice{position:relative;cursor:pointer}
 .choice input{position:absolute;opacity:0;pointer-events:none}
-.choice span{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:54px;padding:12px 16px;border:1.5px solid var(--line);border-radius:12px;font-weight:500;color:var(--petrol);font-size:.98rem;line-height:1.25;background:#fff;transition:border-color .2s,background .2s,transform .25s var(--ease),box-shadow .25s}
+.choice span{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:46px;padding:9px 14px;border:1.5px solid var(--line);border-radius:11px;font-weight:500;color:var(--petrol);font-size:.94rem;line-height:1.25;background:#fff;transition:border-color .2s,background .2s,transform .25s var(--ease),box-shadow .25s}
 .choice span small{font-weight:400;color:var(--muted);font-size:.84rem;margin-top:3px}
 .choices.c3 .choice span{text-align:center;align-items:center}
 .flags-q .choice span{flex-direction:row;justify-content:flex-start;align-items:center;gap:11px}
@@ -172,14 +172,14 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .field{margin-bottom:14px}
 .field label{display:block;font-weight:500;font-size:.9rem;color:var(--petrol);margin-bottom:6px}
-.field input{width:100%;font:inherit;font-size:16px;padding:13px 15px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--text);transition:border-color .2s,box-shadow .2s}
+.field input{width:100%;font:inherit;font-size:16px;padding:11px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--text);transition:border-color .2s,box-shadow .2s}
 .field input:focus{outline:none;border-color:var(--petrol);box-shadow:0 0 0 4px rgba(17,88,123,.12)}
 .perk{display:flex;gap:10px;align-items:center;background:var(--gold-tint);color:#6B4800;border-radius:12px;padding:11px 14px;font-size:.92rem;margin:2px 0 14px}
 .perk svg{flex:none;width:20px;height:20px;color:#C98C00}
 .perk b{font-weight:500}
-.qstep .btn-primary{width:100%;padding:18px}
+.qstep .btn-primary{width:100%;padding:16px}
 .consent{font-size:.8rem;color:var(--muted);margin:12px 0 0;line-height:1.45;text-align:center}
-.form-foot{margin-top:18px;padding-top:16px;border-top:1px solid var(--line)}
+.form-foot{margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
 .form-foot ul{list-style:none;margin:0 0 8px;padding:0;display:flex;flex-wrap:wrap;gap:6px 16px}
 .form-foot li{font-size:.86rem;font-weight:500;color:var(--petrol);display:flex;align-items:center;gap:6px}
 .form-foot li::before{content:"";width:14px;height:14px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23157A73' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat}
@@ -197,15 +197,21 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .dq .btn-outline{width:100%;padding:15px}
 
 /* Stats ribbon */
-.stats{position:relative;z-index:3;margin-top:-92px}
-.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-lg)}
-.stat{padding:30px 28px;position:relative}
-.stat+.stat::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:1px;background:var(--line)}
-.stat strong{display:block;font-size:clamp(1.6rem,2.6vw,2.3rem);font-weight:600;color:var(--petrol);letter-spacing:-.03em;line-height:1.1}
-.stat > span{font-size:.95rem;color:var(--muted)}
+.stats{position:relative;z-index:3;margin-top:-44px}
+.stats-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.96);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:18px;box-shadow:var(--shadow-lg);overflow:hidden}
+.stats-grid::before{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--petrol),var(--teal));background-size:200% 100%;animation:edge 6s linear infinite}
+@keyframes edge{to{background-position:200% 0}}
+.stat{display:flex;align-items:center;gap:14px;padding:18px 22px;position:relative;transition:background .3s}
+.stat:hover{background:#F5FAFA}
+.stat+.stat::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:1px;background:var(--line)}
+.stat .s-ic{flex:none;width:42px;height:42px;border-radius:12px;background:var(--teal-tint);color:var(--teal-text);display:grid;place-items:center;transition:transform .4s var(--ease),background .3s,color .3s}
+.stat:hover .s-ic{background:var(--petrol);color:#fff;transform:rotate(-8deg)}
+.stat .s-ic svg{width:20px;height:20px}
+.stat strong{display:block;font-size:1.28rem;font-weight:600;color:var(--petrol);letter-spacing:-.02em;line-height:1.15}
+.stat .s-txt > span{font-size:.84rem;color:var(--muted);line-height:1.3}
 
 /* Reviews */
-.reviews-sec{padding-top:110px}
+.reviews-sec{padding-top:88px}
 .tp-badge{display:inline-flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 18px;box-shadow:var(--shadow);margin-top:26px}
 .tp-logo{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:1.05rem;color:#191919;letter-spacing:-.02em}
 .tp-logo svg{width:22px;height:22px;color:var(--tp)}
@@ -214,12 +220,12 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .tp-stars i svg{width:14px;height:14px;fill:#fff}
 .tp-badge span{font-size:.86rem;color:var(--muted)}
 .reviews{display:grid;grid-template-columns:1.05fr 1.95fr;gap:24px;align-items:start}
-.review-feature{position:sticky;top:110px;background:linear-gradient(160deg,var(--deep),var(--petrol));color:#D7E6EE;border-radius:var(--r-lg);padding:38px 36px;overflow:hidden;box-shadow:var(--shadow-lg);margin:0}
+.review-feature{position:sticky;top:110px;background:linear-gradient(160deg,var(--deep),var(--petrol));color:#D7E6EE;border-radius:var(--r-lg);padding:32px 30px;overflow:hidden;box-shadow:var(--shadow-lg);margin:0}
 .review-feature .wave{top:0;right:0;width:62%;aspect-ratio:4/3}
 .review-feature .wave .w1{fill:rgba(84,189,180,.35)}
 .review-feature .wave .w2{fill:rgba(255,255,255,.05)}
 .review-feature > :not(.wave){position:relative}
-.review-feature blockquote{margin:22px 0 0;font-size:1.12rem;line-height:1.7;font-weight:300;color:#fff}
+.review-feature blockquote{margin:20px 0 0;font-size:1.04rem;line-height:1.7;font-weight:300;color:#fff}
 .review-feature blockquote p{margin:0 0 .9em}
 .review-feature .more{max-height:12.5em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 60%,transparent);mask-image:linear-gradient(#000 60%,transparent);transition:max-height .7s var(--ease)}
 .review-feature.open .more{max-height:60em;-webkit-mask-image:none;mask-image:none}
@@ -229,10 +235,10 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .review-feature figcaption{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
 .review-feature figcaption strong{color:#fff;font-weight:500}
 .review-grid{columns:2;column-gap:24px}
-.review{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:28px;margin:0 0 24px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
+.review{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;margin:0 0 20px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
 .review:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
 .review h3{font-size:1.1rem;font-weight:500;margin:16px 0 8px}
-.review blockquote{margin:14px 0 0;font-size:1rem;color:var(--text)}
+.review blockquote{margin:14px 0 0;font-size:.95rem;color:var(--text)}
 .review h3+blockquote{margin-top:0}
 .review blockquote p{margin:0 0 .7em}
 .review blockquote p:last-child{margin:0}
@@ -244,12 +250,11 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .src{margin-left:auto;display:inline-flex;align-items:center;gap:5px;font-size:.8rem;font-weight:500;color:#191919;white-space:nowrap}
 .src svg{width:15px;height:15px;color:var(--tp)}
 .review-feature .src{color:#fff}
-.review .stars-gold{color:var(--gold);letter-spacing:2px}
 
 /* Why Medient */
 .why{background:linear-gradient(170deg,var(--deeper),var(--deep) 40%,var(--petrol));color:#C9DCE6;padding:0;overflow:hidden}
 .why .divider{fill:var(--bg)}
-.why-inner{padding:90px 0 110px;position:relative}
+.why-inner{padding:72px 0 90px;position:relative}
 .why .wave-bl{left:0;bottom:0;width:min(640px,70vw);aspect-ratio:10/3}
 .why .wave-bl path{transform-origin:0 100%}
 .why .wave-bl .w1{fill:rgba(84,189,180,.18)}
@@ -258,14 +263,14 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .why-intro{position:sticky;top:130px;align-self:start}
 .why-intro .btn{margin-top:18px}
 .why-list{list-style:none;margin:0;padding:0;counter-reset:w}
-.why-item{counter-increment:w;display:grid;grid-template-columns:56px 1fr;gap:6px 22px;padding:30px 0;border-top:1px solid rgba(255,255,255,.12);position:relative}
+.why-item{counter-increment:w;display:grid;grid-template-columns:48px 1fr;gap:4px 20px;padding:22px 0;border-top:1px solid rgba(255,255,255,.12);position:relative}
 .why-item:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
 .why-item::after{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--teal);transition:width .9s var(--ease)}
 .why-item.in::after{width:100%}
-.why-item .ic{grid-row:span 2;width:56px;height:56px;border-radius:16px;background:rgba(84,189,180,.14);color:var(--teal);display:grid;place-items:center;transition:background .3s,transform .4s var(--ease)}
+.why-item .ic{grid-row:span 2;width:48px;height:48px;border-radius:16px;background:rgba(84,189,180,.14);color:var(--teal);display:grid;place-items:center;transition:background .3s,transform .4s var(--ease)}
 .why-item:hover .ic{background:var(--teal);color:var(--deep);transform:rotate(-6deg)}
 .why-item .ic svg{width:24px;height:24px}
-.why-item h3{margin:4px 0 0;font-size:1.3rem;color:#fff}
+.why-item h3{margin:2px 0 0;font-size:1.15rem;color:#fff}
 .why-item p{margin:0;color:#B9D0DC}
 
 /* Why Europe */
@@ -294,7 +299,7 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 
 /* Course guide */
 .guide-sec{background:#fff}
-.facts{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:var(--r-lg);margin-bottom:72px;background:var(--bg)}
+.facts{display:grid;grid-template-columns:repeat(5,1fr);border:1px solid var(--line);border-radius:var(--r-lg);margin-bottom:56px;background:var(--bg)}
 .fact{padding:24px 24px 22px}
 .fact+.fact{border-left:1px solid var(--line)}
 .fact span{display:block;font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
@@ -310,11 +315,11 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .timeline .yr{display:inline-block;font-size:.76rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--teal-text);background:var(--teal-tint);padding:5px 10px;border-radius:99px;margin-bottom:12px}
 .timeline b{display:block;font-size:1.15rem;font-weight:500;color:var(--petrol);margin-bottom:6px;letter-spacing:-.01em}
 .timeline p{font-size:.96rem;color:var(--muted);margin:0}
-.outcome{display:flex;gap:16px;align-items:center;background:var(--teal-tint);border-radius:var(--r);padding:22px 26px;margin:0 0 72px;color:var(--petrol)}
+.outcome{display:flex;gap:16px;align-items:center;background:var(--teal-tint);border-radius:var(--r);padding:20px 24px;margin:0 0 56px;color:var(--petrol)}
 .outcome svg{flex:none;width:30px;height:30px;color:var(--teal-text)}
 .outcome b{font-weight:500}
 .req-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:start}
-.req-card{background:linear-gradient(160deg,var(--deep),var(--petrol));color:#C9DCE6;border-radius:var(--r-lg);padding:40px;position:relative;overflow:hidden}
+.req-card{background:linear-gradient(160deg,var(--deep),var(--petrol));color:#C9DCE6;border-radius:var(--r-lg);padding:34px;position:relative;overflow:hidden}
 .req-card .wave{top:0;right:0;width:50%;aspect-ratio:4/3}
 .req-card .wave .w1{fill:rgba(84,189,180,.25)}
 .req-card .wave .w2{fill:rgba(255,255,255,.04)}
@@ -354,39 +359,59 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .how-head .label{justify-content:center}
 .how-head .lede{margin:0 auto}
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;counter-reset:s;position:relative}
-.steps::before{content:"";position:absolute;top:44px;left:16%;right:16%;border-top:2px dashed rgba(17,88,123,.25)}
+.steps::before{content:"";position:absolute;top:38px;left:16%;right:16%;border-top:2px dashed rgba(17,88,123,.25)}
 .step{counter-increment:s;text-align:center;position:relative;padding:0 10px}
-.step::before{content:counter(s);display:grid;place-items:center;width:88px;height:88px;margin:0 auto 26px;border-radius:50%;background:#fff;box-shadow:var(--shadow);font-size:2rem;font-weight:600;color:var(--petrol);border:6px solid var(--tint);outline:2px solid var(--teal);outline-offset:-8px;transition:transform .4s var(--ease)}
+.step::before{content:counter(s);display:grid;place-items:center;width:76px;height:76px;margin:0 auto 22px;border-radius:50%;background:#fff;box-shadow:var(--shadow);font-size:2rem;font-weight:600;color:var(--petrol);border:6px solid var(--tint);outline:2px solid var(--teal);outline-offset:-8px;transition:transform .4s var(--ease)}
 .step:hover::before{transform:scale(1.06)}
 .step h3{font-size:1.3rem;font-weight:500}
 .step p{color:var(--muted);max-width:300px;margin:0 auto}
 
-/* Flight board */
-.board{max-width:1100px;margin:0 auto;background:#fff;border-radius:var(--r-lg);box-shadow:var(--shadow-lg);overflow:hidden;border:1px solid var(--line)}
-.board-top{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:18px 26px;background:linear-gradient(120deg,var(--deep),var(--petrol));color:#fff;font-weight:500;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;position:relative;overflow:hidden}
-.board-top span{display:flex;align-items:center;gap:10px;position:relative}
-.board-top svg{width:20px;height:20px;color:var(--teal)}
-.board-top .live{color:#BFE6E2}
-.board-top .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(84,189,180,.25);animation:blink 1.8s infinite}
+/* Destinations: photo route cards */
+.routes-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:16px;font-size:.78rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.routes-top span{display:flex;align-items:center;gap:10px}
+.routes-top svg{width:18px;height:18px;color:var(--teal-text)}
+.routes-top .live{color:var(--teal-text)}
+.routes-top .live::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px rgba(84,189,180,.22);animation:blink 1.8s infinite}
 @keyframes blink{50%{opacity:.35}}
-.board-top::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-40%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);animation:sweep 5s 1s infinite}
-@keyframes sweep{to{left:120%}}
-.board-row{display:grid;grid-template-columns:1.25fr .7fr 2fr auto;gap:24px;align-items:center;padding:20px 26px;border-top:1px solid var(--line);transition:background .25s}
-.board-row:hover{background:#F4F8FA}
-.board-row.labels{padding:12px 26px;border-top:0;background:var(--bg);font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-.board-row.labels:hover{background:var(--bg)}
-.dest{display:flex;align-items:center;gap:12px}
-.dest img{width:28px;height:auto;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.08)}
-.flap{display:inline-flex;gap:3px;font-weight:500;font-size:1rem;text-transform:uppercase}
-.flap b{display:inline-grid;place-items:center;min-width:1.2em;height:1.8em;padding:0 2px;background:var(--petrol);color:#fff;border-radius:4px;font-weight:500;position:relative;box-shadow:inset 0 -2px 0 rgba(0,0,0,.18)}
-.flap b::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.22)}
-.flight{display:inline-flex;flex-direction:column;align-items:flex-start}
-.flight b{background:var(--teal-tint);color:var(--teal-text);font-weight:500;font-size:.98rem;padding:6px 12px;border-radius:99px;white-space:nowrap}
-.flight small{font-size:.74rem;color:var(--muted);margin:4px 0 0 4px}
-.board-row p{margin:0;font-size:.95rem;color:var(--muted)}
-.board-btn{font-weight:500;font-size:.92rem;color:var(--petrol);border-radius:10px;padding:11px 16px;text-decoration:none;white-space:nowrap;box-shadow:inset 0 0 0 1.5px var(--line);transition:all .25s var(--ease)}
-.board-row:hover .board-btn,.board-btn:hover{background:var(--red);color:#fff;box-shadow:none}
-.board-note{font-size:.84rem;color:var(--muted);margin:18px auto 0;max-width:1100px}
+.routes{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:repeat(2,300px);gap:18px}
+.route{position:relative;min-height:0;border-radius:20px;overflow:hidden;background:var(--deep);color:#fff;isolation:isolate;box-shadow:var(--shadow);transition:transform .45s var(--ease),box-shadow .45s var(--ease)}
+.route.feature{grid-row:span 2}
+.route > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1.2s var(--ease)}
+.route::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(7,47,68,.15) 0%,rgba(7,47,68,0) 22%,rgba(7,47,68,.5) 52%,rgba(7,47,68,.95) 100%)}
+.route:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg)}
+.route:hover > img{transform:scale(1.07)}
+.route-tag{position:absolute;top:16px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.route-tag .flag{display:flex;align-items:center;gap:8px;min-height:32px;background:rgba(255,255,255,.94);color:var(--petrol);border-radius:99px;padding:5px 12px 5px 6px;font-size:.8rem;font-weight:500}
+.route-tag .flag img{width:22px;height:22px;border-radius:50%;object-fit:cover}
+.route-tag .flag.solo{padding:5px}
+.route-tag .time{display:flex;align-items:center;gap:6px;background:rgba(7,47,68,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.22);border-radius:99px;padding:6px 12px;font-size:.8rem;font-weight:500;white-space:nowrap}
+.route-tag .time svg{width:14px;height:14px;color:var(--teal)}
+.route-body{position:absolute;left:0;right:0;bottom:0;padding:20px}
+.route .flap{display:inline-flex;gap:3px;font-weight:500;font-size:.98rem;text-transform:uppercase;margin-bottom:10px}
+.route.feature .flap{font-size:1.2rem}
+.flap b{display:inline-grid;place-items:center;min-width:1.2em;height:1.8em;padding:0 2px;background:var(--petrol);color:#fff;border-radius:4px;font-weight:500;position:relative;box-shadow:inset 0 -2px 0 rgba(0,0,0,.2)}
+.flap b::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:rgba(0,0,0,.25)}
+.route-body p{margin:0 0 14px;font-size:.9rem;line-height:1.5;color:#D6E5EC;}
+.route.feature .route-body{padding:28px}
+.route.feature .route-body p{font-size:1rem;max-width:30em}
+.route-foot{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;border-top:1px dashed rgba(255,255,255,.3)}
+.route-foot .codes{font-size:.74rem;letter-spacing:.14em;color:#A9C6D5;display:flex;align-items:center;gap:6px}
+.route-foot .codes svg{width:12px;height:12px}
+.route-btn{display:inline-flex;align-items:center;gap:6px;background:#fff;color:var(--petrol);font-weight:500;font-size:.86rem;padding:9px 14px;border-radius:10px;text-decoration:none;white-space:nowrap;transition:background .25s,color .25s}
+.route-btn::after{content:"";position:absolute;inset:0}
+.route:hover .route-btn{background:var(--red);color:#fff}
+.board-note{font-size:.82rem;color:var(--muted);margin:16px 0 0}
+@media (max-width:1020px){
+  .routes{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .route{height:260px}
+  .route.feature{grid-column:1/-1;grid-row:auto;height:300px}
+}
+@media (max-width:640px){
+  .routes{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin:0 -18px;padding:4px 18px 14px;scrollbar-width:none}
+  .routes::-webkit-scrollbar{display:none}
+  .route,.route.feature{flex:0 0 84%;height:360px;scroll-snap-align:center}
+  .routes-top .live{display:none}
+}
 
 /* Services */
 .services-sec{background:var(--tint)}
@@ -408,7 +433,7 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .price-card{background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:40px;position:relative;transition:transform .35s var(--ease),box-shadow .35s}
 .price-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
 .price-card h3{font-size:1.15rem;font-weight:500;margin-bottom:18px}
-.price-card .big{font-size:clamp(2.8rem,5vw,3.8rem);font-weight:600;color:var(--petrol);letter-spacing:-.04em;line-height:1}
+.price-card .big{font-size:clamp(2.4rem,4vw,3.2rem);font-weight:600;color:var(--petrol);letter-spacing:-.04em;line-height:1}
 .price-card .big small{font-size:1rem;font-weight:400;color:var(--muted);letter-spacing:0}
 .price-card p{margin:20px 0 0;color:var(--muted)}
 .price-card.feature{background:linear-gradient(160deg,var(--deep),var(--petrol));border:0;color:#C9DCE6;overflow:hidden;box-shadow:var(--shadow-lg)}
@@ -435,14 +460,14 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .faq .ans p{margin:0;padding:0 60px 24px 0;color:var(--muted)}
 
 /* Final CTA */
-.final{background:linear-gradient(160deg,var(--deeper),var(--deep) 45%,var(--petrol));color:#C9DCE6;text-align:center;overflow:hidden;padding:130px 0}
+.final{background:linear-gradient(160deg,var(--deeper),var(--deep) 45%,var(--petrol));color:#C9DCE6;text-align:center;overflow:hidden;padding:100px 0}
 .final .wave-tr{top:0;right:0;width:min(560px,50vw);aspect-ratio:4/3}
 .final .wave-bl{left:0;bottom:0;width:min(600px,64vw);aspect-ratio:10/3}
 .final .wave-bl path{transform-origin:0 100%}
 .final .w1{fill:rgba(84,189,180,.55)}
 .final .w2{fill:rgba(255,255,255,.05)}
 .final .wrap{position:relative;z-index:1}
-.final h2{color:#fff;font-size:clamp(2.2rem,4.4vw,3.6rem);max-width:15em;margin:0 auto 18px}
+.final h2{color:#fff;font-size:clamp(1.9rem,3.4vw,2.8rem);max-width:15em;margin:0 auto 18px}
 .final p{max-width:36em;margin:0 auto 36px;font-size:1.14rem;font-weight:300}
 .final .btns{display:flex;justify-content:center;gap:14px;flex-wrap:wrap}
 
@@ -459,7 +484,9 @@ footer .credit a{margin:0}
 .js [data-reveal]{opacity:0;transform:translateY(26px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
 .js [data-reveal].in{opacity:1;transform:none}
 
-@media (min-width:641px){.qstep[data-step="1"],.qstep[data-step="2"],.qstep[data-step="3"],.qstep[data-step="4"],.qstep[data-step="5"]{min-height:180px}}
+@media (min-width:641px){.qstep[data-step="1"],.qstep[data-step="2"],.qstep[data-step="3"],.qstep[data-step="4"],.qstep[data-step="5"]{min-height:162px}}
+/* Short laptop screens: keep the whole hero and form above the fold */
+@media (min-width:1021px) and (max-height:860px){.hero{padding:36px 0 96px}.hero h1{font-size:2.55rem}.hero .lede{margin-bottom:18px}.usps{margin-bottom:18px}.hero-grid{align-items:start}.form-card{margin-top:4px}}
 @media (max-width:1020px){
   .hero-grid,.why-grid,.europe-grid,.consult,.faq-grid,.req-grid,.split-head,.reviews{grid-template-columns:1fr;gap:48px}
   .why-intro,.faq-grid > div:first-child,.review-feature{position:static}
@@ -475,11 +502,6 @@ footer .credit a{margin:0}
   .svc{border-right:1px solid var(--line) !important;border-bottom:1px solid var(--line) !important}
   .svc:nth-child(2n){border-right:0 !important}
   .svc:nth-child(n+5){border-bottom:0 !important}
-  .board-row{grid-template-columns:1fr auto;gap:10px 14px;padding:18px}
-  .board-row .flight{grid-column:2;grid-row:1;align-items:flex-end}
-  .board-row p{grid-column:1/-1}
-  .board-row .board-btn{grid-column:1/-1;justify-self:start;background:var(--red);color:#fff;box-shadow:none}
-  .board-row.labels{display:none}
 }
 @media (max-width:640px){
   body{font-size:16.5px}
@@ -525,8 +547,6 @@ footer .credit a{margin:0}
   .price{grid-template-columns:1fr}
   .price-card{padding:32px 26px}
   .faq .ans p{padding-right:0}
-  .board-top .live{display:none}
-  .flap{font-size:.92rem}
   footer{padding-bottom:110px}
   .mcta{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:50;gap:10px;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);transition:transform .35s var(--ease)}
   .mcta.is-hidden{transform:translateY(110%)}
@@ -688,10 +708,10 @@ footer .credit a{margin:0}
 <div class="stats">
   <div class="wrap">
     <div class="stats-grid" data-reveal>
-      <div class="stat"><strong>No UCAT</strong><span>or BMAT needed</span></div>
-      <div class="stat"><strong>£<span data-count="5">5</span>k+</strong><span>tuition fees per year</span></div>
-      <div class="stat"><strong><span data-count="100">100</span>%</strong><span>taught in English</span></div>
-      <div class="stat"><strong>Oct &amp; Feb</strong><span>intakes available</span></div>
+      <div class="stat"><span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h6l1 2h3v16H5V5h3z"/><path d="m9.5 11.5 5 5M14.5 11.5l-5 5"/></svg></span><div class="s-txt"><strong>No UCAT</strong><span>or BMAT needed</span></div></div>
+      <div class="stat"><span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 7.5A4.5 4.5 0 0 0 9 9.5V13H7M9 13v2c0 1.5-.8 3-2 4h11M7 13h7"/></svg></span><div class="s-txt"><strong>£<b data-count="5" style="font-weight:inherit">5</b>k+</strong><span>tuition fees per year</span></div></div>
+      <div class="stat"><span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg></span><div class="s-txt"><strong><b data-count="100" style="font-weight:inherit">100</b>%</strong><span>taught in English</span></div></div>
+      <div class="stat"><span class="s-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18M8 14h2M14 14h2M8 17h2"/></svg></span><div class="s-txt"><strong>Oct &amp; Feb</strong><span>intakes available</span></div></div>
     </div>
   </div>
 </div>
@@ -743,14 +763,14 @@ footer .credit a{margin:0}
           <figcaption class="who"><span class="avatar" style="background:#C98C00" aria-hidden="true">S</span><span><strong>Sania Amjed</strong>Medient student</span><span class="src"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg>Trustpilot</span></figcaption>
         </figure>
         <figure class="review" data-reveal style="--i:3">
-          <span class="stars-gold" aria-label="5 stars">★★★★★</span>
-          <blockquote><p>"I was guided through every step of my admission process. I would recommend Medient because they proactively help you get to your goal."</p></blockquote>
-          <figcaption class="who"><span class="avatar" style="background:var(--deep)" aria-hidden="true">Z</span><span><strong>Zain</strong>Medient student</span></figcaption>
+          <span class="tp-stars" role="img" aria-label="Rated 5 out of 5 on Trustpilot"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i></span>
+          <blockquote><p>I was guided through every step of my admission process. I would recommend Medient because they proactively help you get to your goal.</p></blockquote>
+          <figcaption class="who"><span class="avatar" style="background:var(--deep)" aria-hidden="true">Z</span><span><strong>Zain</strong>Medient student</span><span class="src"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg>Trustpilot</span></figcaption>
         </figure>
         <figure class="review" data-reveal style="--i:4">
-          <span class="stars-gold" aria-label="5 stars">★★★★★</span>
-          <blockquote><p>"Very helpful with all my enquiries about medical school abroad. The application process was made easy and they were always on hand to answer questions."</p></blockquote>
-          <figcaption class="who"><span class="avatar" style="background:var(--teal-text)" aria-hidden="true">W</span><span><strong>Winston</strong>Medient student</span></figcaption>
+          <span class="tp-stars" role="img" aria-label="Rated 5 out of 5 on Trustpilot"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i><i><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg></i></span>
+          <blockquote><p>Very helpful with all my enquiries about medical school abroad. The application process was made easy and they were always on hand to answer questions.</p></blockquote>
+          <figcaption class="who"><span class="avatar" style="background:var(--teal-text)" aria-hidden="true">W</span><span><strong>Winston</strong>Medient student</span><span class="src"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.8 6.6 7.2.6-5.5 4.7 1.7 7-6.2-3.8-6.2 3.8 1.7-7L2 9.7l7.2-.6z"/></svg>Trustpilot</span></figcaption>
         </figure>
       </div>
     </div>
@@ -912,14 +932,55 @@ footer .credit a{margin:0}
       </div>
       <p class="lede" data-reveal style="--i:1">English-taught Medicine at established universities, each a short flight from the UK.</p>
     </div>
-    <div class="board" id="board" data-reveal>
-      <div class="board-top"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>Departures from London</span><span class="live">Now boarding</span></div>
-      <div class="board-row labels"><span>Destination</span><span>Flight time</span><span>Why students pick it</span><span></span></div>
-      <div class="board-row"><div class="dest"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Poland.svg-24x15.png" alt="" width="24" height="15"><span class="flap" data-text="Poland">Poland</span></div><div class="flight"><b>2h 30m</b><small>approx. flight</small></div><p>The most popular choice for UK students. Long-established universities and a large English-speaking student community.</p><a class="board-btn" href="#apply" data-track="country_poland" data-country="Poland">Check eligibility →</a></div>
-      <div class="board-row"><div class="dest"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Slovakia.svg-24x16.png" alt="" width="24" height="16"><span class="flap" data-text="Slovakia">Slovakia</span></div><div class="flight"><b>2h 15m</b><small>approx. flight</small></div><p>EU medical faculties in Martin and Košice with a strong clinical focus and smaller class sizes.</p><a class="board-btn" href="#apply" data-track="country_slovakia" data-country="Slovakia">Check eligibility →</a></div>
-      <div class="board-row"><div class="dest"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Georgia.svg-24x16.png" alt="" width="24" height="16"><span class="flap" data-text="Georgia">Georgia</span></div><div class="flight"><b>5h 00m</b><small>approx. flight</small></div><p>Some of the lowest tuition and living costs in Europe, with flexible entry requirements.</p><a class="board-btn" href="#apply" data-track="country_georgia" data-country="Georgia">Check eligibility →</a></div>
-      <div class="board-row"><div class="dest"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Romania.svg-24x16.png" alt="" width="24" height="16"><span class="flap" data-text="Romania">Romania</span></div><div class="flight"><b>3h 15m</b><small>approx. flight</small></div><p>EU-accredited medical schools with strong clinical training and modern teaching hospitals.</p><a class="board-btn" href="#apply" data-track="country_romania" data-country="Romania">Check eligibility →</a></div>
-      <div class="board-row"><div class="dest"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Bulgaria_with_coat_of_arms.svg-24x14.png" alt="" width="24" height="14"><span class="flap" data-text="Bulgaria">Bulgaria</span></div><div class="flight"><b>3h 05m</b><small>approx. flight</small></div><p>Affordable EU degrees in welcoming student cities, with a lower cost of living.</p><a class="board-btn" href="#apply" data-track="country_bulgaria" data-country="Bulgaria">Check eligibility →</a></div>
+    <div id="board" data-reveal>
+      <div class="routes-top"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>Departures from London</span><span class="live">Now boarding</span></div>
+      <div class="routes">
+      <article class="route feature" data-reveal style="--i:0">
+        <img src="https://images.unsplash.com/photo-1636903364559-0dfc358abd94?w=1000&amp;h=1100&amp;fit=crop&amp;q=70&amp;auto=format" alt="Kraków main square, Poland" width="1000" height="1100" loading="lazy">
+        <div class="route-tag"><span class="flag"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Poland.svg-24x15.png" alt="" width="22" height="22">Most popular</span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>2h 30m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Poland">Poland</span>
+          <p>The most popular choice for UK students. Long-established universities and a large English-speaking student community.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> WAW</span><a class="route-btn" href="#apply" data-track="country_poland" data-country="Poland">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:1">
+        <img src="https://images.unsplash.com/photo-1568616388664-1e37d8376363?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Bratislava Castle, Slovakia" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Slovakia.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>2h 15m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Slovakia">Slovakia</span>
+          <p>EU medical faculties in Martin and Košice with a strong clinical focus and smaller class sizes.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> BTS</span><a class="route-btn" href="#apply" data-track="country_slovakia" data-country="Slovakia">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:2">
+        <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Tbilisi skyline, Georgia" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Georgia.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>5h 00m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Georgia">Georgia</span>
+          <p>Some of the lowest tuition and living costs in Europe, with flexible entry requirements.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> TBS</span><a class="route-btn" href="#apply" data-track="country_georgia" data-country="Georgia">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:3">
+        <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Historic building in Bucharest, Romania" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Romania.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>3h 15m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Romania">Romania</span>
+          <p>EU-accredited medical schools with strong clinical training and modern teaching hospitals.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> OTP</span><a class="route-btn" href="#apply" data-track="country_romania" data-country="Romania">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:4">
+        <img src="https://images.unsplash.com/photo-1594803294810-c860e5d29e07?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Alexander Nevsky Cathedral, Sofia, Bulgaria" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Bulgaria_with_coat_of_arms.svg-24x14.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>3h 05m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Bulgaria">Bulgaria</span>
+          <p>Affordable EU degrees in welcoming student cities, with a lower cost of living.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> SOF</span><a class="route-btn" href="#apply" data-track="country_bulgaria" data-country="Bulgaria">Check eligibility →</a></div>
+        </div>
+      </article>
+      </div>
     </div>
     <p class="board-note">Flight times are typical direct flights from London. Your advisor will help you plan your journey.</p>
   </div>
