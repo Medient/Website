@@ -108,7 +108,7 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .divider{display:block;width:100%;height:clamp(40px,6vw,90px);margin:-1px 0}
 
 /* Hero */
-.hero{position:relative;overflow:hidden;background:radial-gradient(900px 500px at 12% 0%,rgba(84,189,180,.22),transparent 65%),linear-gradient(160deg,var(--deeper) 0%,var(--deep) 45%,var(--petrol) 100%);color:#C9DCE6;padding:52px 0 112px}
+.hero{position:relative;overflow:hidden;background:radial-gradient(900px 500px at 12% 0%,rgba(84,189,180,.22),transparent 65%),linear-gradient(160deg,var(--deeper) 0%,var(--deep) 45%,var(--petrol) 100%);color:#C9DCE6;padding:52px 0 150px}
 .hero::after{content:"";position:absolute;inset:0;background:url("https://images.unsplash.com/photo-1758270705518-b61b40527e76?w=1600&q=60&auto=format&fit=crop") center/cover no-repeat;opacity:.12;mix-blend-mode:luminosity;pointer-events:none}
 .hero .wave-tr{top:0;right:0;width:min(680px,55vw);aspect-ratio:4/3;z-index:1}
 .hero .wave-tr .w1{fill:rgba(84,189,180,.9)}
@@ -116,11 +116,7 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .hero .wrap{position:relative;z-index:2}
 .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
 .hero .eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.74rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#A9E2DC;margin-bottom:16px}
-.hero .eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 5px rgba(84,189,180,.22)}
 .hero h1{color:#fff;margin-bottom:16px}
-.hero h1 span{color:var(--teal);position:relative;display:inline-block}
-.hero h1 span svg{position:absolute;left:0;bottom:-.2em;width:100%;height:.3em;overflow:visible}
-.hero h1 span path{fill:none;stroke:var(--teal);stroke-width:5;stroke-linecap:round;opacity:.6;stroke-dasharray:600;stroke-dashoffset:600;animation:draw 1.4s .6s var(--ease) forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
 .hero .lede{color:#C3D7E1;font-size:1.04rem;margin-bottom:24px;max-width:31em}
 .usps{list-style:none;margin:0 0 24px;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;max-width:540px}
@@ -133,6 +129,35 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .flags{display:flex;align-items:center;gap:6px;font-size:.88rem}
 .flags img{width:22px;height:auto;border-radius:2px;box-shadow:0 0 0 1px rgba(255,255,255,.2)}
 .flags span{margin-left:6px}
+
+
+/* Hero: ECG paper, live heartbeat trace, floating crosses, cursor light, word-by-word reveal */
+.ecg-grid{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(rgba(255,255,255,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.02) 1px,transparent 1px);
+  background-size:120px 120px,120px 120px,24px 24px,24px 24px;
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 30% 60%,#000 30%,transparent 80%);mask-image:radial-gradient(ellipse 80% 70% at 30% 60%,#000 30%,transparent 80%)}
+.spot{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(520px circle at var(--mx,30%) var(--my,40%),rgba(84,189,180,.16),transparent 62%);transition:background .2s}
+.ecg{position:absolute;left:0;right:0;bottom:46px;width:100%;height:110px;z-index:1;pointer-events:none;overflow:visible}
+.ecg path{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.ecg .base{stroke:rgba(84,189,180,.16);stroke-width:1.5}
+.ecg .trail{stroke:rgba(84,189,180,.35);stroke-width:2;stroke-dasharray:260 740;animation:trace 5.5s linear infinite}
+.ecg .head{stroke:#9FF0E8;stroke-width:2.6;stroke-dasharray:70 930;animation:trace 5.5s linear infinite;filter:drop-shadow(0 0 6px rgba(84,189,180,.95)) drop-shadow(0 0 14px rgba(84,189,180,.6))}
+@keyframes trace{from{stroke-dashoffset:1000}to{stroke-dashoffset:0}}
+.plus{position:absolute;z-index:1;width:var(--s,18px);height:var(--s,18px);left:var(--x);top:var(--y);opacity:.0;pointer-events:none;animation:drift var(--t,14s) ease-in-out var(--dl,0s) infinite}
+.plus::before,.plus::after{content:"";position:absolute;inset:0;margin:auto;background:var(--teal);border-radius:2px}
+.plus::before{width:100%;height:28%}
+.plus::after{width:28%;height:100%}
+@keyframes drift{0%{opacity:0;transform:translateY(20px) rotate(0)}20%{opacity:.28}80%{opacity:.18}100%{opacity:0;transform:translateY(-70px) rotate(90deg)}}
+.hero .eyebrow .pulse{width:30px;height:14px;flex:none;overflow:visible}
+.hero .eyebrow .pulse path{fill:none;stroke:var(--teal);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:beatline 1.6s ease-in-out infinite}
+@keyframes beatline{0%{stroke-dashoffset:60}55%{stroke-dashoffset:0}100%{stroke-dashoffset:-60}}
+.hero h1 .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em;margin-bottom:-.08em}
+.hero h1 .w > span{display:inline-block;transform:translateY(105%);animation:rise .95s var(--ease) forwards;animation-delay:calc(.15s + var(--d) * 75ms)}
+.hero h1 .accent{color:var(--teal)}
+@keyframes rise{to{transform:none}}
+.hero .fade{opacity:0;animation:fadeUp .9s var(--ease) forwards;animation-delay:var(--d,0s)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.usps li{opacity:0;animation:fadeUp .7s var(--ease) forwards;animation-delay:calc(.9s + var(--d) * 90ms)}
 
 /* Form card */
 .form-card{position:relative;background:#fff;border-radius:20px;padding:24px 24px 20px;box-shadow:var(--shadow-lg);display:flex;flex-direction:column;scroll-margin-top:100px;color:var(--text);animation:cardIn .9s .2s var(--ease) both}
@@ -211,8 +236,11 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .stat .s-txt > span{font-size:.84rem;color:var(--muted);line-height:1.3}
 
 /* Reviews */
-.reviews-sec{padding-top:88px}
-.tp-badge{display:inline-flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 18px;box-shadow:var(--shadow);margin-top:26px}
+.reviews-sec{padding-top:72px;background:#fff}
+.dest-sec{padding-top:88px}
+.why .divider.top{fill:var(--bg)}
+.why .divider.bottom{fill:#fff}
+.tp-badge{display:inline-flex;align-items:center;gap:14px;background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:12px 18px;box-shadow:var(--shadow);margin-top:26px}
 .tp-logo{display:inline-flex;align-items:center;gap:6px;font-weight:600;font-size:1.05rem;color:#191919;letter-spacing:-.02em}
 .tp-logo svg{width:22px;height:22px;color:var(--tp)}
 .tp-stars{display:inline-flex;gap:2px}
@@ -235,7 +263,7 @@ header .btn{padding:13px 20px;font-size:.92rem;border-radius:10px}
 .review-feature figcaption{display:flex;align-items:center;gap:14px;margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
 .review-feature figcaption strong{color:#fff;font-weight:500}
 .review-grid{columns:2;column-gap:24px}
-.review{break-inside:avoid;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;margin:0 0 20px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
+.review{break-inside:avoid;background:var(--bg);border:1px solid var(--line);border-radius:var(--r-lg);padding:24px;margin:0 0 20px;transition:transform .35s var(--ease),box-shadow .35s var(--ease),border-color .3s}
 .review:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
 .review h3{font-size:1.1rem;font-weight:500;margin:16px 0 8px}
 .review blockquote{margin:14px 0 0;font-size:.95rem;color:var(--text)}
@@ -486,7 +514,7 @@ footer .credit a{margin:0}
 
 @media (min-width:641px){.qstep[data-step="1"],.qstep[data-step="2"],.qstep[data-step="3"],.qstep[data-step="4"],.qstep[data-step="5"]{min-height:162px}}
 /* Short laptop screens: keep the whole hero and form above the fold */
-@media (min-width:1021px) and (max-height:860px){.hero{padding:36px 0 96px}.hero h1{font-size:2.55rem}.hero .lede{margin-bottom:18px}.usps{margin-bottom:18px}.hero-grid{align-items:start}.form-card{margin-top:4px}}
+@media (min-width:1021px) and (max-height:860px){.hero{padding:36px 0 132px}.hero h1{font-size:2.55rem}.hero .lede{margin-bottom:18px}.usps{margin-bottom:18px}.hero-grid{align-items:start}.form-card{margin-top:4px}}
 @media (max-width:1020px){
   .hero-grid,.why-grid,.europe-grid,.consult,.faq-grid,.req-grid,.split-head,.reviews{grid-template-columns:1fr;gap:48px}
   .why-intro,.faq-grid > div:first-child,.review-feature{position:static}
@@ -505,6 +533,8 @@ footer .credit a{margin:0}
 }
 @media (max-width:640px){
   body{font-size:16.5px}
+  .ecg{bottom:40px;height:90px}
+  .plus:nth-of-type(n+4){display:none}
   section{padding:80px 0}
   .wrap{padding:0 18px}
   .head-phone span{display:none}
@@ -555,9 +585,11 @@ footer .credit a{margin:0}
   .mcta .btn-wa svg{width:24px;height:24px}
 }
 @media (prefers-reduced-motion:reduce){
+  .hero h1 .w > span{transform:none}
+  .hero .fade,.usps li{opacity:1}
+  .ecg .head,.ecg .trail,.plus{display:none}
   *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;transition-delay:0s !important;scroll-behavior:auto !important}
   .js [data-reveal]{opacity:1;transform:none}
-  .hero h1 span path{stroke-dashoffset:0}
 }
 </style>
 </head>
@@ -580,19 +612,23 @@ footer .credit a{margin:0}
 <main>
 <!-- HERO -->
 <section class="hero">
+  <div class="ecg-grid" aria-hidden="true"></div>
+  <div class="spot" aria-hidden="true"></div>
+  <svg class="ecg" viewBox="0 0 1440 150" preserveAspectRatio="none" aria-hidden="true"><path class="base" d="M0 80 L58 80 L66 75 L74 72 L82 75 L90 80 L112 80 L118 86 L127 22 L136 100 L143 80 L172 80 L184 71 L198 67 L212 71 L224 80 L360 80 L418 80 L426 75 L434 72 L442 75 L450 80 L472 80 L478 86 L487 22 L496 100 L503 80 L532 80 L544 71 L558 67 L572 71 L584 80 L720 80 L778 80 L786 75 L794 72 L802 75 L810 80 L832 80 L838 86 L847 22 L856 100 L863 80 L892 80 L904 71 L918 67 L932 71 L944 80 L1080 80 L1138 80 L1146 75 L1154 72 L1162 75 L1170 80 L1192 80 L1198 86 L1207 22 L1216 100 L1223 80 L1252 80 L1264 71 L1278 67 L1292 71 L1304 80 L1440 80"/><path class="trail" pathLength="1000" d="M0 80 L58 80 L66 75 L74 72 L82 75 L90 80 L112 80 L118 86 L127 22 L136 100 L143 80 L172 80 L184 71 L198 67 L212 71 L224 80 L360 80 L418 80 L426 75 L434 72 L442 75 L450 80 L472 80 L478 86 L487 22 L496 100 L503 80 L532 80 L544 71 L558 67 L572 71 L584 80 L720 80 L778 80 L786 75 L794 72 L802 75 L810 80 L832 80 L838 86 L847 22 L856 100 L863 80 L892 80 L904 71 L918 67 L932 71 L944 80 L1080 80 L1138 80 L1146 75 L1154 72 L1162 75 L1170 80 L1192 80 L1198 86 L1207 22 L1216 100 L1223 80 L1252 80 L1264 71 L1278 67 L1292 71 L1304 80 L1440 80"/><path class="head" pathLength="1000" d="M0 80 L58 80 L66 75 L74 72 L82 75 L90 80 L112 80 L118 86 L127 22 L136 100 L143 80 L172 80 L184 71 L198 67 L212 71 L224 80 L360 80 L418 80 L426 75 L434 72 L442 75 L450 80 L472 80 L478 86 L487 22 L496 100 L503 80 L532 80 L544 71 L558 67 L572 71 L584 80 L720 80 L778 80 L786 75 L794 72 L802 75 L810 80 L832 80 L838 86 L847 22 L856 100 L863 80 L892 80 L904 71 L918 67 L932 71 L944 80 L1080 80 L1138 80 L1146 75 L1154 72 L1162 75 L1170 80 L1192 80 L1198 86 L1207 22 L1216 100 L1223 80 L1252 80 L1264 71 L1278 67 L1292 71 L1304 80 L1440 80"/></svg>
+  <span class="plus" style="--x:6%;--y:22%;--s:14px;--t:15s;--dl:0s"></span><span class="plus" style="--x:44%;--y:14%;--s:10px;--t:12s;--dl:3s"></span><span class="plus" style="--x:52%;--y:70%;--s:16px;--t:17s;--dl:6s"></span><span class="plus" style="--x:3%;--y:78%;--s:12px;--t:13s;--dl:8s"></span><span class="plus" style="--x:88%;--y:64%;--s:12px;--t:16s;--dl:2s"></span><span class="plus" style="--x:34%;--y:40%;--s:8px;--t:11s;--dl:5s"></span>
   <svg class="wave wave-tr" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true"><path class="w1" d="M120 0C190 70 240 150 400 175V0Z"/><path class="w2" d="M190 0C245 80 300 160 400 240V0Z"/></svg>
   <div class="wrap hero-grid">
     <div class="hero-text">
-      <span class="eyebrow">For UK students · October &amp; February intakes</span>
-      <h1>Study Medicine in Europe, <span>taught in English<svg viewBox="0 0 300 12" preserveAspectRatio="none" aria-hidden="true"><path d="M3 8C80 2 200 2 297 7"/></svg></span></h1>
-      <p class="lede">Missed out on a UK place? Study Medicine in English at GMC-recognised universities across Europe, with an advisor by your side throughout.</p>
+      <span class="eyebrow fade" style="--d:.05s"><svg class="pulse" viewBox="0 0 30 14" aria-hidden="true"><path d="M0 7h8l2-4 3 9 3-11 3 8 2-2h9"/></svg>For UK students · October &amp; February intakes</span>
+      <h1 aria-label="Study Medicine in Europe, taught in English"><span aria-hidden="true"><span class="w"><span style="--d:0">Study</span></span> <span class="w"><span style="--d:1">Medicine</span></span> <span class="w"><span style="--d:2">in</span></span> <span class="w"><span style="--d:3">Europe,</span></span> <span class="accent"><span class="w"><span style="--d:4">taught</span></span> <span class="w"><span style="--d:5">in</span></span> <span class="w"><span style="--d:6">English</span></span></span></span></h1>
+      <p class="lede fade" style="--d:.75s">Missed out on a UK place? Study Medicine in English at GMC-recognised universities across Europe, with an advisor by your side throughout.</p>
       <ul class="usps">
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No UCAT or BMAT required</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tuition fees £5k+ per year</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>GMC-recognised universities</li>
-        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>24/7 advisor, housing &amp; pickup</li>
+        <li style="--d:0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>No UCAT or BMAT required</li>
+        <li style="--d:1"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Tuition fees £5k+ per year</li>
+        <li style="--d:2"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>GMC-recognised universities</li>
+        <li style="--d:3"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>24/7 advisor, housing &amp; pickup</li>
       </ul>
-      <div class="proof">
+      <div class="proof fade" style="--d:1.35s">
         <div class="proof-rating"><span class="stars" aria-hidden="true">★★★★★</span><span><b>5-star</b> student reviews</span></div>
         <div class="flags" aria-label="Universities in Poland, Slovakia, Romania, Bulgaria and Georgia">
           <img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Poland.svg-24x15.png" alt="" width="24" height="15">
@@ -716,6 +752,95 @@ footer .credit a{margin:0}
   </div>
 </div>
 
+<!-- DESTINATIONS -->
+<section class="dest-sec">
+  <div class="wrap">
+    <div class="split-head">
+      <div data-reveal>
+        <span class="label">Destinations</span>
+        <h2>Our students' top picks</h2>
+      </div>
+      <p class="lede" data-reveal style="--i:1">English-taught Medicine at established universities, each a short flight from the UK.</p>
+    </div>
+    <div id="board" data-reveal>
+      <div class="routes-top"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>Departures from London</span><span class="live">Now boarding</span></div>
+      <div class="routes">
+      <article class="route feature" data-reveal style="--i:0">
+        <img src="https://images.unsplash.com/photo-1636903364559-0dfc358abd94?w=1000&amp;h=1100&amp;fit=crop&amp;q=70&amp;auto=format" alt="Kraków main square, Poland" width="1000" height="1100" loading="lazy">
+        <div class="route-tag"><span class="flag"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Poland.svg-24x15.png" alt="" width="22" height="22">Most popular</span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>2h 30m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Poland">Poland</span>
+          <p>The most popular choice for UK students. Long-established universities and a large English-speaking student community.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> WAW</span><a class="route-btn" href="#apply" data-track="country_poland" data-country="Poland">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:1">
+        <img src="https://images.unsplash.com/photo-1568616388664-1e37d8376363?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Bratislava Castle, Slovakia" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Slovakia.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>2h 15m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Slovakia">Slovakia</span>
+          <p>EU medical faculties in Martin and Košice with a strong clinical focus and smaller class sizes.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> BTS</span><a class="route-btn" href="#apply" data-track="country_slovakia" data-country="Slovakia">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:2">
+        <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Tbilisi skyline, Georgia" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Georgia.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>5h 00m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Georgia">Georgia</span>
+          <p>Some of the lowest tuition and living costs in Europe, with flexible entry requirements.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> TBS</span><a class="route-btn" href="#apply" data-track="country_georgia" data-country="Georgia">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:3">
+        <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Historic building in Bucharest, Romania" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Romania.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>3h 15m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Romania">Romania</span>
+          <p>EU-accredited medical schools with strong clinical training and modern teaching hospitals.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> OTP</span><a class="route-btn" href="#apply" data-track="country_romania" data-country="Romania">Check eligibility →</a></div>
+        </div>
+      </article>
+      <article class="route" data-reveal style="--i:4">
+        <img src="https://images.unsplash.com/photo-1594803294810-c860e5d29e07?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Alexander Nevsky Cathedral, Sofia, Bulgaria" width="700" height="520" loading="lazy">
+        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Bulgaria_with_coat_of_arms.svg-24x14.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>3h 05m</span></div>
+        <div class="route-body">
+          <span class="flap" data-text="Bulgaria">Bulgaria</span>
+          <p>Affordable EU degrees in welcoming student cities, with a lower cost of living.</p>
+          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> SOF</span><a class="route-btn" href="#apply" data-track="country_bulgaria" data-country="Bulgaria">Check eligibility →</a></div>
+        </div>
+      </article>
+      </div>
+    </div>
+    <p class="board-note">Flight times are typical direct flights from London. Your advisor will help you plan your journey.</p>
+  </div>
+</section>
+
+<!-- WHY CHOOSE MEDIENT -->
+<section class="why on-dark">
+  <svg class="divider top" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V20C1100 80 700 90 0 40Z"/></svg>
+  <svg class="wave wave-bl" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><path class="w2" d="M0 20C120 30 260 70 400 120H0Z"/><path class="w1" d="M0 70C110 70 220 95 300 120H0Z"/></svg>
+  <div class="why-inner">
+    <div class="wrap why-grid">
+      <div class="why-intro" data-reveal>
+        <span class="label">Why choose Medient</span>
+        <h2>The agency that stays with you after you land</h2>
+        <p class="lede">Plenty of agencies can submit an application. Medient is built by former students who look after you for the whole six years.</p>
+        <a class="btn btn-primary" href="#apply" data-track="cta_why">Book my free consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+      </div>
+      <ul class="why-list">
+        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div><h3>Run by people who've done it</h3><p>Our team studied medicine in Europe themselves, so we know exactly what you're going through.</p></li>
+        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Protected under UK law</h3><p>Every agreement is under UK law. If we don't deliver the service we promised, you get your money back.</p></li>
+        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div><h3>Guaranteed place</h3><p>Meet the entry requirements and your place is guaranteed, with your acceptance letter within 7 working days of signing.</p></li>
+        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Official university partners</h3><p>We hold signed agreements with the universities we work with, so your application goes straight to the right people.</p></li>
+        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Honest, up-to-date advice</h3><p>We'll tell you which universities genuinely fit your grades and budget, even when the answer isn't what you hoped.</p></li>
+        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></svg></div><h3>With you for the whole degree</h3><p>Airport pickup, accommodation, residence permit and a 24/7 advisor, from your first day to graduation and beyond.</p></li>
+      </ul>
+    </div>
+  </div>
+  <svg class="divider bottom" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90H1440V50C1000 0 500 10 0 70Z"/></svg>
+</section>
+
 <!-- TESTIMONIALS -->
 <section class="reviews-sec">
   <div class="wrap">
@@ -777,29 +902,20 @@ footer .credit a{margin:0}
   </div>
 </section>
 
-<!-- WHY CHOOSE MEDIENT -->
-<section class="why on-dark">
-  <svg class="divider" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H1440V20C1100 80 700 90 0 40Z"/></svg>
-  <svg class="wave wave-bl" viewBox="0 0 400 120" preserveAspectRatio="none" aria-hidden="true"><path class="w2" d="M0 20C120 30 260 70 400 120H0Z"/><path class="w1" d="M0 70C110 70 220 95 300 120H0Z"/></svg>
-  <div class="why-inner">
-    <div class="wrap why-grid">
-      <div class="why-intro" data-reveal>
-        <span class="label">Why choose Medient</span>
-        <h2>The agency that stays with you after you land</h2>
-        <p class="lede">Plenty of agencies can submit an application. Medient is built by former students who look after you for the whole six years.</p>
-        <a class="btn btn-primary" href="#apply" data-track="cta_why">Book my free consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-      </div>
-      <ul class="why-list">
-        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2 9 2 12 0v-5"/></svg></div><h3>Run by people who've done it</h3><p>Our team studied medicine in Europe themselves, so we know exactly what you're going through.</p></li>
-        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Protected under UK law</h3><p>Every agreement is under UK law. If we don't deliver the service we promised, you get your money back.</p></li>
-        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 15l2 2 4-4"/></svg></div><h3>Guaranteed place</h3><p>Meet the entry requirements and your place is guaranteed, with your acceptance letter within 7 working days of signing.</p></li>
-        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>Official university partners</h3><p>We hold signed agreements with the universities we work with, so your application goes straight to the right people.</p></li>
-        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Honest, up-to-date advice</h3><p>We'll tell you which universities genuinely fit your grades and budget, even when the answer isn't what you hoped.</p></li>
-        <li class="why-item" data-reveal><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5V21H3z"/><path d="M9 21v-6h6v6"/></svg></div><h3>With you for the whole degree</h3><p>Airport pickup, accommodation, residence permit and a 24/7 advisor, from your first day to graduation and beyond.</p></li>
-      </ul>
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div class="wrap">
+    <div class="how-head" data-reveal>
+      <span class="label">How it works</span>
+      <h2>From enquiry to acceptance letter in three steps</h2>
+      <p class="lede">We handle the paperwork, the university and the move, so you can focus on getting ready.</p>
+    </div>
+    <div class="steps">
+      <div class="step" data-reveal><h3>Free consultation</h3><p>Your advisor reviews your qualifications and goals, then shortlists the universities that fit you.</p></div>
+      <div class="step" data-reveal style="--i:1"><h3>Pick &amp; apply</h3><p>Choose your course and university. We prepare and submit your application and handle the paperwork.</p></div>
+      <div class="step" data-reveal style="--i:2"><h3>Get your acceptance</h3><p>Receive your acceptance letter, plus every document and guide you need before you travel.</p></div>
     </div>
   </div>
-  <svg class="divider" viewBox="0 0 1440 90" preserveAspectRatio="none" aria-hidden="true"><path d="M0 90H1440V50C1000 0 500 10 0 70Z"/></svg>
 </section>
 
 <!-- WHY EUROPE -->
@@ -903,86 +1019,6 @@ footer .credit a{margin:0}
       <li data-reveal style="--i:3"><b>Your timeline</b><span>Which intake you can make and the deadlines to hit.</span></li>
       <li data-reveal style="--i:4"><b>Path back to the UK</b><span>How GMC registration works for your chosen university after you graduate.</span></li>
     </ul>
-  </div>
-</section>
-
-<!-- HOW IT WORKS -->
-<section class="how">
-  <div class="wrap">
-    <div class="how-head" data-reveal>
-      <span class="label">How it works</span>
-      <h2>From enquiry to acceptance letter in three steps</h2>
-      <p class="lede">We handle the paperwork, the university and the move, so you can focus on getting ready.</p>
-    </div>
-    <div class="steps">
-      <div class="step" data-reveal><h3>Free consultation</h3><p>Your advisor reviews your qualifications and goals, then shortlists the universities that fit you.</p></div>
-      <div class="step" data-reveal style="--i:1"><h3>Pick &amp; apply</h3><p>Choose your course and university. We prepare and submit your application and handle the paperwork.</p></div>
-      <div class="step" data-reveal style="--i:2"><h3>Get your acceptance</h3><p>Receive your acceptance letter, plus every document and guide you need before you travel.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- DESTINATIONS -->
-<section>
-  <div class="wrap">
-    <div class="split-head">
-      <div data-reveal>
-        <span class="label">Destinations</span>
-        <h2>Our students' top picks</h2>
-      </div>
-      <p class="lede" data-reveal style="--i:1">English-taught Medicine at established universities, each a short flight from the UK.</p>
-    </div>
-    <div id="board" data-reveal>
-      <div class="routes-top"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>Departures from London</span><span class="live">Now boarding</span></div>
-      <div class="routes">
-      <article class="route feature" data-reveal style="--i:0">
-        <img src="https://images.unsplash.com/photo-1636903364559-0dfc358abd94?w=1000&amp;h=1100&amp;fit=crop&amp;q=70&amp;auto=format" alt="Kraków main square, Poland" width="1000" height="1100" loading="lazy">
-        <div class="route-tag"><span class="flag"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Poland.svg-24x15.png" alt="" width="22" height="22">Most popular</span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>2h 30m</span></div>
-        <div class="route-body">
-          <span class="flap" data-text="Poland">Poland</span>
-          <p>The most popular choice for UK students. Long-established universities and a large English-speaking student community.</p>
-          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> WAW</span><a class="route-btn" href="#apply" data-track="country_poland" data-country="Poland">Check eligibility →</a></div>
-        </div>
-      </article>
-      <article class="route" data-reveal style="--i:1">
-        <img src="https://images.unsplash.com/photo-1568616388664-1e37d8376363?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Bratislava Castle, Slovakia" width="700" height="520" loading="lazy">
-        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Slovakia.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>2h 15m</span></div>
-        <div class="route-body">
-          <span class="flap" data-text="Slovakia">Slovakia</span>
-          <p>EU medical faculties in Martin and Košice with a strong clinical focus and smaller class sizes.</p>
-          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> BTS</span><a class="route-btn" href="#apply" data-track="country_slovakia" data-country="Slovakia">Check eligibility →</a></div>
-        </div>
-      </article>
-      <article class="route" data-reveal style="--i:2">
-        <img src="https://images.unsplash.com/photo-1565008576549-57569a49371d?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Tbilisi skyline, Georgia" width="700" height="520" loading="lazy">
-        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Georgia.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>5h 00m</span></div>
-        <div class="route-body">
-          <span class="flap" data-text="Georgia">Georgia</span>
-          <p>Some of the lowest tuition and living costs in Europe, with flexible entry requirements.</p>
-          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> TBS</span><a class="route-btn" href="#apply" data-track="country_georgia" data-country="Georgia">Check eligibility →</a></div>
-        </div>
-      </article>
-      <article class="route" data-reveal style="--i:3">
-        <img src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Historic building in Bucharest, Romania" width="700" height="520" loading="lazy">
-        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Romania.svg-24x16.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>3h 15m</span></div>
-        <div class="route-body">
-          <span class="flap" data-text="Romania">Romania</span>
-          <p>EU-accredited medical schools with strong clinical training and modern teaching hospitals.</p>
-          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> OTP</span><a class="route-btn" href="#apply" data-track="country_romania" data-country="Romania">Check eligibility →</a></div>
-        </div>
-      </article>
-      <article class="route" data-reveal style="--i:4">
-        <img src="https://images.unsplash.com/photo-1594803294810-c860e5d29e07?w=700&amp;h=520&amp;fit=crop&amp;q=70&amp;auto=format" alt="Alexander Nevsky Cathedral, Sofia, Bulgaria" width="700" height="520" loading="lazy">
-        <div class="route-tag"><span class="flag solo"><img src="https://medient.co.uk/wp-content/uploads/2023/10/Flag_of_Bulgaria_with_coat_of_arms.svg-24x14.png" alt="" width="22" height="22"></span><span class="time"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>3h 05m</span></div>
-        <div class="route-body">
-          <span class="flap" data-text="Bulgaria">Bulgaria</span>
-          <p>Affordable EU degrees in welcoming student cities, with a lower cost of living.</p>
-          <div class="route-foot"><span class="codes">LON <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg> SOF</span><a class="route-btn" href="#apply" data-track="country_bulgaria" data-country="Bulgaria">Check eligibility →</a></div>
-        </div>
-      </article>
-      </div>
-    </div>
-    <p class="board-note">Flight times are typical direct flights from London. Your advisor will help you plan your journey.</p>
   </div>
 </section>
 
@@ -1209,6 +1245,10 @@ footer .credit a{margin:0}
   }
   onScroll(); addEventListener('scroll',onScroll,{passive:true});
 
+  var hero=document.querySelector('.hero');
+  if(hero&&!reduce&&matchMedia('(pointer:fine)').matches){
+    hero.addEventListener('pointermove',function(e){ var r=hero.getBoundingClientRect(); hero.style.setProperty('--mx',(e.clientX-r.left)+'px'); hero.style.setProperty('--my',(e.clientY-r.top)+'px'); });
+  }
   // Full review toggle
   var feat=document.querySelector('.review-feature'), rm=feat&&feat.querySelector('.read-more');
   if(rm) rm.addEventListener('click',function(){ var o=feat.classList.toggle('open'); rm.setAttribute('aria-expanded',o); rm.querySelector('span').textContent=o?'Show less':'Read full review'; });
