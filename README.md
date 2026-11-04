@@ -4,7 +4,7 @@ Static HTML site. No build step and no dependencies. Hosted on GitHub Pages from
 
 | Path | Page |
 |---|---|
-| `/` | Simple chooser linking to both landing pages |
+| `/` | Redirects to medient.co.uk (no page of its own) |
 | `/medicine/` | Medicine landing page (`medicine/index.html`) |
 | `/medicine/thank-you` | Shown after the medicine form is submitted |
 | `/dentistry/` | Dentistry landing page (`dentistry/index.html`) |
