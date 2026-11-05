@@ -30,10 +30,10 @@ var FROM_NAME = 'Medient website';
 // the script matches fields to your existing headers by name instead, so you
 // can reorder, rename to these names, or add your own columns freely.
 var COLUMNS = [
-  'Submitted at', 'course', 'lead_tier', 'lead_score', 'name', 'first_name', 'last_name', 'email', 'phone',
+  'Submitted at', 'source', 'course', 'lead_tier', 'lead_score', 'name', 'first_name', 'last_name', 'email', 'phone',
   'country', 'passport', 'start', 'budget', 'funding',
   'utm_source', 'utm_medium', 'utm_campaign', 'utm_term', 'utm_content',
-  'gclid', 'gbraid', 'wbraid', 'gad_source', 'landing_page'
+  'gclid', 'gbraid', 'wbraid', 'fbclid', 'gad_source', 'landing_page'
 ];
 
 // Marketing sheets that each lead is also copied into (shared with Bobo).
@@ -54,6 +54,7 @@ function doPost(e) {
   data.first_name = clean_(data.first_name || data.name);
   data.last_name = clean_(data.last_name);
   data.name = [data.first_name, data.last_name].filter(String).join(' ');
+  data.source = source_(data);
 
   var lock = LockService.getScriptLock();
   lock.waitLock(20000);
@@ -124,7 +125,8 @@ function sendEmail_(d, when) {
     ['Name', d.name], ['Email', d.email], ['Mobile', d.phone],
     ['Country', d.country], ['Passport', d.passport], ['Start', d.start],
     ['Budget', d.budget], ['Funding', d.funding],
-    ['Source', [d.utm_source, d.utm_medium, d.utm_campaign].filter(String).join(' / ')],
+    ['Source', d.source],
+    ['Campaign', [d.utm_source, d.utm_medium, d.utm_campaign].filter(String).join(' / ')],
     ['Keyword', d.utm_term], ['Google click ID', d.gclid || d.gbraid || d.wbraid],
     ['Page', d.landing_page],
     ['Submitted', Utilities.formatDate(when, Session.getScriptTimeZone(), 'dd MMM yyyy, HH:mm')]
@@ -200,6 +202,17 @@ function matchRowAbove_(sh, r) {
   from.copyTo(row, SpreadsheetApp.CopyPasteType.PASTE_DATA_VALIDATION, false);
 }
 
+// Where the lead came from, in plain words, for the sheet and the email.
+// Google click IDs win, then Facebook's, then the utm_source tag.
+function source_(d) {
+  var u = String(d.utm_source || '').toLowerCase();
+  if (d.gclid || d.gbraid || d.wbraid || d.gad_source || /google|adwords/.test(u)) return 'Google Ads';
+  if (/^(ig|instagram)/.test(u)) return 'Instagram';
+  if (d.fbclid || /^(fb|facebook|meta)/.test(u)) return 'Facebook';
+  if (u) return d.utm_source;
+  return 'Direct / other';
+}
+
 // Lead Tracker: Date | Full Name | Relevence | Qualified | Looking for | Intent | Lead Status | Further notes
 // The team fills in the judgement columns; the form fills Date, Full Name and Looking for.
 function addToLeadTracker_(d, when) {
@@ -213,7 +226,7 @@ function addToLeadTracker_(d, when) {
   sh.getRange(r, 1).setValue(when);
   sh.getRange(r, 2).setNumberFormat('@').setValue(d.name);
   if (looking) sh.getRange(r, 5).setValue(looking);
-  var note = 'Website form: ' + (d.course || '') + (country ? ' in ' + country : '') + ', ' + (d.lead_tier || '') + ' lead' + (d.utm_campaign ? ', ' + d.utm_campaign : '');
+  var note = 'Website form (' + d.source + '): ' + (d.course || '') + (country ? ' in ' + country : '') + ', ' + (d.lead_tier || '') + ' lead' + (d.utm_campaign ? ', ' + d.utm_campaign : '');
   sh.getRange(r, 8).setNumberFormat('@').setValue(note);
 }
 

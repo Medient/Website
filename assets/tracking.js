@@ -8,6 +8,11 @@
  *               GA4, Google Ads (conversion + remarketing) and Meta are set
  *               up inside GTM by the marketing team, using the events below.
  *   CLARITY_ID  Microsoft Clarity project id (only loads after consent).
+ *   META_PIXEL  Meta (Facebook/Instagram) Pixel id. Loads only after the visitor
+ *               accepts cookies. Sends PageView, and SubmitApplication (same
+ *               event the WordPress site uses) when the form is sent. It lives
+ *               here, not in GTM, because the WordPress site loads its own pixel
+ *               through a plugin and GTM runs on both sites.
  *
  * Consent (UK GDPR / PECR): Google Consent Mode v2 starts with everything
  * denied except security. The banner lets visitors accept or reject, and the
@@ -27,6 +32,7 @@
 (function () {
   var GTM_ID = 'GTM-TRWMG8D';
   var CLARITY_ID = '';
+  var META_PIXEL = '307614630031962';
 
   var KEY = 'medient_consent_v1';
   window.dataLayer = window.dataLayer || [];
@@ -54,6 +60,7 @@
     if (c.ads) gtag('set', 'ads_data_redaction', false);
     dataLayer.push({ event: 'cookie_consent_update', analytics: !!c.analytics, ads: !!c.ads, consent_source: fromBanner ? 'banner' : 'saved' });
     if (c.analytics) loadClarity();
+    if (c.ads) loadPixel(); else if (window.fbq) fbq('consent', 'revoke');
   }
   if (saved) apply(saved, false);
 
@@ -74,6 +81,36 @@
       y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, 'clarity', 'script', CLARITY_ID);
   }
+
+  var pixelLoaded = false;
+  function loadPixel() {
+    if (!META_PIXEL) return;
+    if (pixelLoaded) { fbq('consent', 'grant'); return; }
+    pixelLoaded = true;
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0'; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
+    }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', META_PIXEL);
+    fbq('track', 'PageView');
+  }
+
+  // Called by the form once a lead is saved. Sends SubmitApplication to Meta
+  // (only if the visitor accepted cookies), with the lead id for de-duplication.
+  // Meta hashes the email/phone/name in the browser before sending them.
+  window.medientPixelLead = function (lead) {
+    if (!pixelLoaded || !window.fbq || !lead) return;
+    var u = lead.user_data || {}, a = u.address || {};
+    fbq('init', META_PIXEL, {
+      em: u.email || undefined, ph: (u.phone_number || '').replace(/\D/g, '') || undefined,
+      fn: (a.first_name || '').toLowerCase() || undefined, ln: (a.last_name || '').toLowerCase() || undefined, country: 'gb'
+    });
+    fbq('track', 'SubmitApplication', {
+      value: lead.value, currency: lead.currency || 'GBP', content_name: lead.course,
+      content_category: lead.lead_tier, destination_country: lead.country
+    }, { eventID: lead.lead_id });
+  };
 
   // Small helper the pages use for their events.
   window.medientTrack = function (event, params) {

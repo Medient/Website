@@ -678,7 +678,7 @@ footer .credit a{margin:0}
       <form name="dentistry-enquiry" method="POST" action="https://script.google.com/macros/s/AKfycbwUsrG8VbFzyYCco5KY6CphooZs6Cq-osTteWWpO4I9ZXHbCLZzGxRr1b5BpxONpZLJ/exec" data-thanks="thank-you" id="leadForm" novalidate>
         <p class="hidden"><label>Leave this empty: <input name="company" tabindex="-1" autocomplete="off"></label></p>
         <input type="hidden" name="course" value="Dentistry"><input type="hidden" name="lead_tier"><input type="hidden" name="lead_score">
-        <input type="hidden" name="gclid"><input type="hidden" name="gbraid"><input type="hidden" name="wbraid"><input type="hidden" name="gad_source"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="landing_page">
+        <input type="hidden" name="gclid"><input type="hidden" name="fbclid"><input type="hidden" name="gbraid"><input type="hidden" name="wbraid"><input type="hidden" name="gad_source"><input type="hidden" name="utm_source"><input type="hidden" name="utm_medium"><input type="hidden" name="utm_campaign"><input type="hidden" name="utm_term"><input type="hidden" name="utm_content"><input type="hidden" name="landing_page">
 
         <fieldset class="qstep is-active" data-step="1">
           <legend>Which country interests you most?</legend>
@@ -1152,7 +1152,7 @@ footer .credit a{margin:0}
 <script>
 (function(){
   // Persist ad click IDs and UTMs so they reach the lead form even after scrolling or reloading.
-  var keys=['gclid','gbraid','wbraid','gad_source','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
+  var keys=['gclid','gbraid','wbraid','fbclid','gad_source','utm_source','utm_medium','utm_campaign','utm_term','utm_content'];
   var p=new URLSearchParams(location.search), store={};
   try{store=JSON.parse(sessionStorage.getItem('lp_attr')||'{}')}catch(e){}
   keys.forEach(function(k){if(p.get(k))store[k]=p.get(k)});
@@ -1161,10 +1161,11 @@ footer .credit a{margin:0}
   // Falls back to the Google Ads cookie (_gcl_aw, set after consent) and the main site's stored gclid.
   try{
     var saved=JSON.parse(localStorage.getItem('lp_click')||'null'), now=Date.now();
-    if(p.get('gclid')||p.get('gbraid')||p.get('wbraid')) localStorage.setItem('lp_click',JSON.stringify({gclid:p.get('gclid')||'',gbraid:p.get('gbraid')||'',wbraid:p.get('wbraid')||'',t:now}));
-    else if(saved&&now-saved.t<7776e6){ ['gclid','gbraid','wbraid'].forEach(function(k){if(!store[k]&&saved[k])store[k]=saved[k]}); }
-    if(!store.gclid){ var m=document.cookie.match(/(?:^|; )_gcl_aw=GCL\.\d+\.([^;]+)/); if(m) store.gclid=decodeURIComponent(m[1]); }
-    if(!store.gclid&&localStorage.getItem('gclid')) store.gclid=localStorage.getItem('gclid');
+    // Last ad click wins: a new Google or Facebook click replaces the one remembered.
+    if(p.get('gclid')||p.get('gbraid')||p.get('wbraid')||p.get('fbclid')) localStorage.setItem('lp_click',JSON.stringify({gclid:p.get('gclid')||'',gbraid:p.get('gbraid')||'',wbraid:p.get('wbraid')||'',fbclid:p.get('fbclid')||'',t:now}));
+    else if(saved&&now-saved.t<7776e6){ ['gclid','gbraid','wbraid','fbclid'].forEach(function(k){if(!store[k]&&saved[k])store[k]=saved[k]}); }
+    if(!store.gclid&&!store.fbclid){ var m=document.cookie.match(/(?:^|; )_gcl_aw=GCL\.\d+\.([^;]+)/); if(m) store.gclid=decodeURIComponent(m[1]); }
+    if(!store.gclid&&!store.fbclid&&localStorage.getItem('gclid')) store.gclid=localStorage.getItem('gclid');
   }catch(e){}
   var f=document.getElementById('leadForm');
   keys.forEach(function(k){if(store[k])f.elements[k].value=store[k]});
@@ -1258,7 +1259,7 @@ footer .credit a{margin:0}
         // Tell GTM about the lead, then go to the thank-you page (at most 1s wait).
         var gone=false, go=function(){ if(!gone){ gone=true; location.href=thanks; } };
         var ev={event:'generate_lead',eventCallback:go,eventTimeout:1000}; for(var k in lead) ev[k]=lead[k];
-        dataLayer.push(ev); setTimeout(go,1100);
+        dataLayer.push(ev); try{window.medientPixelLead&&medientPixelLead(lead)}catch(x){} setTimeout(go,1100);
       })
       .catch(function(){
         btn.disabled=false; btn.innerHTML=label;

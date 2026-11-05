@@ -31,13 +31,14 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - The script is bound to the owner's Google Sheet (tab `Leads`), runs as **apply@medient.co.uk**, emails each lead to apply@ **from `submissions@medient.co.uk`** (a Gmail "Send mail as" alias), with reply-to set to the student.
 - Columns are matched by header name, so the sheet can be reordered. Values are stored as plain text (phone numbers keep the leading 0 / +44).
 - After editing `Code.gs`: paste it into Apps Script, then **Deploy → Manage deployments → edit → New version** (keeps the same URL). Workspace settings needed: "Execute as: Me", "Who has access: Anyone".
-- Hidden fields: course, lead_tier, lead_score, gclid, gbraid, wbraid, gad_source, utm_* and landing_page. Honeypot field: `company`.
+- Hidden fields: course, lead_tier, lead_score, gclid, gbraid, wbraid, fbclid, gad_source, utm_* and landing_page. Honeypot field: `company`.
 - **Scoring** (max 9): start (ASAP / Sep 2027 = 3, 2028+ = 1, exploring = 0) + budget (£8k+ = 3, lowest paid band = 2) + funding (parents = 3, self = 2, not sure = 1). Hot ≥7, Warm 4–6, Nurture ≤3. Thank-you conversion values: Hot £100, Warm £40, Nurture £10.
 - **Disqualifiers** (no contact step, never a lead): budget under the minimum (medicine £5k, dentistry £4k) or "I'd need a loan".
 - Before publishing any form change, test end to end at desktop and mobile widths and with reduced motion: answers, scoring, UTMs/gclid, the disqualify exit, and the redirect to thank-you.
 
 ## Tracking
-- One file, `assets/tracking.js`, holds `GTM_ID` and `CLARITY_ID`. GA4, Google Ads conversions/remarketing and Meta are configured **inside GTM** by the agency (Bobo, Evan), not hard-coded in pages.
+- One file, `assets/tracking.js`, holds `GTM_ID`, `CLARITY_ID` and `META_PIXEL` (307614630031962). GA4 and Google Ads are configured **inside GTM**. The Meta Pixel is in tracking.js, not GTM, because medient.co.uk loads its own pixel via a WordPress plugin and GTM runs on both sites. It loads only after ads consent and sends PageView + `SubmitApplication` (same event the WordPress site uses; eventID = lead_id, advanced matching em/ph/fn/ln).
+- Lead source: the script fills a `source` column (Google Ads / Facebook / Instagram / utm_source / Direct) from click IDs (gclid, gbraid, wbraid, fbclid) and utm_source. The last ad click is remembered 90 days in localStorage `lp_click`. Facebook ads should use URL parameters `utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`. iPhone Google clicks often carry only a gbraid (no gclid).
 - Consent Mode v2: everything denied by default (UK GDPR/PECR); banner with equal-weight Accept all / Reject all; choice in localStorage `medient_consent_v1`; footer "Cookie settings" reopens it. Clarity only loads after consent.
 - dataLayer events: `form_start`, `form_step`, `form_disqualified`, `generate_lead` (course, country, lead_tier, lead_score, value GBP, lead_id, `user_data` for enhanced conversions), `lead_thank_you` (thank-you page; then user_data is wiped from sessionStorage), `cta_click`, `whatsapp_click`, `cookie_consent_update`.
 - Use absolute asset paths (`/assets/...`) so pages work at any depth, including `/preview/`.
