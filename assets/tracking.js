@@ -31,7 +31,7 @@
  */
 (function () {
   var GTM_ID = 'GTM-TRWMG8D';
-  var CLARITY_ID = '';
+  var CLARITY_ID = 'z921tuu5ej';
   var META_PIXEL = '307614630031962';
 
   var KEY = 'medient_consent_v1';
@@ -59,7 +59,7 @@
     });
     if (c.ads) gtag('set', 'ads_data_redaction', false);
     dataLayer.push({ event: 'cookie_consent_update', analytics: !!c.analytics, ads: !!c.ads, consent_source: fromBanner ? 'banner' : 'saved' });
-    if (c.analytics) loadClarity();
+    if (c.analytics) loadClarity(); else if (window.clarity) clarity('consentv2', { ad_Storage: 'denied', analytics_Storage: 'denied' });
     if (c.ads) loadPixel(); else if (window.fbq) fbq('consent', 'revoke');
   }
   if (saved) apply(saved, false);
@@ -74,12 +74,15 @@
 
   var clarityLoaded = false;
   function loadClarity() {
-    if (!CLARITY_ID || clarityLoaded) return; clarityLoaded = true;
+    if (!CLARITY_ID) return; if (clarityLoaded) { clarity('consentv2', { ad_Storage: 'granted', analytics_Storage: 'granted' }); return; } clarityLoaded = true;
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
       t = l.createElement(r); t.async = 1; t.src = 'https://www.clarity.ms/tag/' + i;
       y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
     })(window, document, 'clarity', 'script', CLARITY_ID);
+    // UK/EEA visitors: tell Clarity consent was given, so it can use cookies and
+    // join up a visitor's sessions. Form fields are masked by Clarity by default.
+    clarity('consentv2', { ad_Storage: 'granted', analytics_Storage: 'granted' });
   }
 
   var pixelLoaded = false;

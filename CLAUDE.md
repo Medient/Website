@@ -37,7 +37,7 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - Before publishing any form change, test end to end at desktop and mobile widths and with reduced motion: answers, scoring, UTMs/gclid, the disqualify exit, and the redirect to thank-you.
 
 ## Tracking
-- One file, `assets/tracking.js`, holds `GTM_ID`, `CLARITY_ID` and `META_PIXEL` (307614630031962). GA4 and Google Ads are configured **inside GTM**. The Meta Pixel is in tracking.js, not GTM, because medient.co.uk loads its own pixel via a WordPress plugin and GTM runs on both sites. It loads only after ads consent and sends PageView + `SubmitApplication` (same event the WordPress site uses; eventID = lead_id, advanced matching em/ph/fn/ln).
+- One file, `assets/tracking.js`, holds `GTM_ID`, `CLARITY_ID` (z921tuu5ej, loads after analytics consent, sends consentv2) and `META_PIXEL` (307614630031962). GA4 and Google Ads are configured **inside GTM**. The Meta Pixel is in tracking.js, not GTM, because medient.co.uk loads its own pixel via a WordPress plugin and GTM runs on both sites. It loads only after ads consent and sends PageView + `SubmitApplication` (same event the WordPress site uses; eventID = lead_id, advanced matching em/ph/fn/ln).
 - Lead source: the script fills a `source` column (Google Ads / Facebook / Instagram / utm_source / Direct) from click IDs (gclid, gbraid, wbraid, fbclid) and utm_source. The last ad click is remembered 90 days in localStorage `lp_click`. Facebook ads should use URL parameters `utm_source=facebook&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`. iPhone Google clicks often carry only a gbraid (no gclid).
 - Consent Mode v2: everything denied by default (UK GDPR/PECR); banner with equal-weight Accept all / Reject all; choice in localStorage `medient_consent_v1`; footer "Cookie settings" reopens it. Clarity only loads after consent.
 - dataLayer events: `form_start`, `form_step`, `form_disqualified`, `generate_lead` (course, country, lead_tier, lead_score, value GBP, lead_id, `user_data` for enhanced conversions), `lead_thank_you` (thank-you page; then user_data is wiped from sessionStorage), `cta_click`, `whatsapp_click`, `cookie_consent_update`.
@@ -66,7 +66,7 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 
 ## Open items
 - GTM version 25 (published 5 Nov 2026) added the landing-page items, all prefixed `LP - `: trigger `LP - generate_lead` (custom event `generate_lead`, Page Hostname equals apply.medient.co.uk), tags `LP - Google Ads Lead` (conversion label RPNcCIaj_JgZEJfAh7Eo, value + lead_id as transaction ID, GBP), `LP - GA4 generate_lead`, `LP - Ads User-provided Data` (email + phone only; Google needs postcode + country to accept names). Roll back to version 24 if ever needed. Test with GTM Preview in your own browser.
-- GTM container is **GTM-TRWMG8D** (shared with www.medient.co.uk; Google Ads AW-10840301591, GA4 G-8TH97K98B0). Clarity ID still to add.
+- GTM container is **GTM-TRWMG8D** (shared with www.medient.co.uk; Google Ads AW-10840301591, GA4 G-8TH97K98B0).
 - Google Ads final URLs should point at apply.medient.co.uk (the github.io URLs redirect).
 - Pages are `noindex` (ad landing pages). Revisit when moving the main site here.
 - Facebook retargeting ads still land on medient.co.uk (owner's choice, Nov 2026); move them to these pages when the whole site moves here.
