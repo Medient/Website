@@ -64,7 +64,7 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - Medicine and dentistry pages share the same design. A design change to one should be mirrored to the other, using the dentistry wording (GDC, £4k, Sep/Oct intakes, 5–6 yrs, DMD).
 
 ## Open items
-- GTM container ID and Clarity ID to be added in `assets/tracking.js` (from Bobo / Medient).
+- GTM container is **GTM-TRWMG8D** (shared with www.medient.co.uk; Google Ads AW-10840301591, GA4 G-8TH97K98B0). Clarity ID still to add.
 - Google Ads final URLs should point at apply.medient.co.uk (the github.io URLs redirect).
 - Pages are `noindex` (ad landing pages). Revisit when moving the main site here.
 - Future: migrate the rest of medient.co.uk from WordPress into this repo.

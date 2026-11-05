@@ -25,7 +25,7 @@
  * Ads enhanced conversions. Turn on "Include user-provided data" in the Ads tag.
  */
 (function () {
-  var GTM_ID = '';
+  var GTM_ID = 'GTM-TRWMG8D';
   var CLARITY_ID = '';
 
   var KEY = 'medient_consent_v1';
