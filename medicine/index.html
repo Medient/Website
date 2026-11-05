@@ -1157,6 +1157,15 @@ footer .credit a{margin:0}
   try{store=JSON.parse(sessionStorage.getItem('lp_attr')||'{}')}catch(e){}
   keys.forEach(function(k){if(p.get(k))store[k]=p.get(k)});
   try{sessionStorage.setItem('lp_attr',JSON.stringify(store))}catch(e){}
+  // Ad clicks: keep the GCLID for 90 days so a visitor who comes back later still counts.
+  // Falls back to the Google Ads cookie (_gcl_aw, set after consent) and the main site's stored gclid.
+  try{
+    var saved=JSON.parse(localStorage.getItem('lp_click')||'null'), now=Date.now();
+    if(p.get('gclid')||p.get('gbraid')||p.get('wbraid')) localStorage.setItem('lp_click',JSON.stringify({gclid:p.get('gclid')||'',gbraid:p.get('gbraid')||'',wbraid:p.get('wbraid')||'',t:now}));
+    else if(saved&&now-saved.t<7776e6){ ['gclid','gbraid','wbraid'].forEach(function(k){if(!store[k]&&saved[k])store[k]=saved[k]}); }
+    if(!store.gclid){ var m=document.cookie.match(/(?:^|; )_gcl_aw=GCL\.\d+\.([^;]+)/); if(m) store.gclid=decodeURIComponent(m[1]); }
+    if(!store.gclid&&localStorage.getItem('gclid')) store.gclid=localStorage.getItem('gclid');
+  }catch(e){}
   var f=document.getElementById('leadForm');
   keys.forEach(function(k){if(store[k])f.elements[k].value=store[k]});
   f.elements['landing_page'].value=location.href.split('?')[0];

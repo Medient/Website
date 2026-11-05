@@ -185,16 +185,47 @@ function ukPhone_(p) {
   return d;
 }
 
+// Gives a new row the same look and dropdowns as the row above it (date format,
+// Yes/No and status lists), so the team can fill it in like the older rows.
+function matchRowAbove_(sh, r) {
+  if (r <= 2) return;
+  var cols = sh.getLastColumn(), src = r - 1;
+  // Use the nearest row above that still has its dropdowns (skips any row that lost them).
+  for (var i = r - 1; i >= Math.max(2, r - 30); i--) {
+    var rules = sh.getRange(i, 1, 1, cols).getDataValidations()[0];
+    if (rules.some(function (x) { return x; })) { src = i; break; }
+  }
+  var from = sh.getRange(src, 1, 1, cols), row = sh.getRange(r, 1, 1, cols);
+  from.copyTo(row, SpreadsheetApp.CopyPasteType.PASTE_FORMAT, false);
+  from.copyTo(row, SpreadsheetApp.CopyPasteType.PASTE_DATA_VALIDATION, false);
+}
+
 // Lead Tracker: Date | Full Name | Relevence | Qualified | Looking for | Intent | Lead Status | Further notes
 // The team fills in the judgement columns; the form fills Date, Full Name and Looking for.
 function addToLeadTracker_(d, when) {
   if (!LEAD_TRACKER.id) return;
   var sh = tab_(LEAD_TRACKER), r = nextRow_(sh);
-  var looking = 'Study ' + (d.course || 'Medicine') + (d.country && d.country !== 'Not sure yet' ? ' in ' + d.country : '');
+  var country = d.country && d.country !== 'Not sure yet' ? d.country : '';
+  matchRowAbove_(sh, r);
+  // "Looking for" is a dropdown ("Study Medicine/Dentistry in Bulgaria" etc.): pick the
+  // option for the chosen country. If there isn't one, leave it blank and put it in the notes.
+  var looking = pickOption_(sh.getRange(r, 5), country);
   sh.getRange(r, 1).setValue(when);
   sh.getRange(r, 2).setNumberFormat('@').setValue(d.name);
-  sh.getRange(r, 5).setNumberFormat('@').setValue(looking);
-  sh.getRange(r, 8).setNumberFormat('@').setValue('Website form (' + (d.lead_tier || '') + ' lead' + (d.utm_campaign ? ', ' + d.utm_campaign : '') + ')');
+  if (looking) sh.getRange(r, 5).setValue(looking);
+  var note = 'Website form: ' + (d.course || '') + (country ? ' in ' + country : '') + ', ' + (d.lead_tier || '') + ' lead' + (d.utm_campaign ? ', ' + d.utm_campaign : '');
+  sh.getRange(r, 8).setNumberFormat('@').setValue(note);
+}
+
+function pickOption_(cell, country) {
+  if (!country) return '';
+  var rule = cell.getDataValidation();
+  if (!rule) return '';
+  var type = rule.getCriteriaType(), vals = rule.getCriteriaValues(), opts = [];
+  if (type === SpreadsheetApp.DataValidationCriteria.VALUE_IN_LIST) opts = vals[0];
+  else if (type === SpreadsheetApp.DataValidationCriteria.VALUE_IN_RANGE) opts = vals[0].getValues().map(function (x) { return x[0]; });
+  for (var i = 0; i < opts.length; i++) if (String(opts[i]).toLowerCase().indexOf(country.toLowerCase()) !== -1) return opts[i];
+  return '';
 }
 
 // Offline Conversion Tracker: Conversion Time | First Name | Email | Phone (+44) | GCLID | Course | Country | Qualified?
@@ -202,6 +233,7 @@ function addToLeadTracker_(d, when) {
 function addToOfflineTracker_(d, when) {
   if (!OFFLINE_TRACKER.id) return;
   var sh = tab_(OFFLINE_TRACKER), r = nextRow_(sh);
+  matchRowAbove_(sh, r);
   sh.getRange(r, 1).setValue(when).setNumberFormat('M/d/yyyy h:mm:ss am/pm');
   sh.getRange(r, 2, 1, 6).setNumberFormat('@').setValues([[
     d.name, String(d.email || '').trim().toLowerCase(), ukPhone_(d.phone), d.gclid || '', d.course || '', d.country || ''
