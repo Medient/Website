@@ -69,4 +69,5 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - GTM container is **GTM-TRWMG8D** (shared with www.medient.co.uk; Google Ads AW-10840301591, GA4 G-8TH97K98B0). Clarity ID still to add.
 - Google Ads final URLs should point at apply.medient.co.uk (the github.io URLs redirect).
 - Pages are `noindex` (ad landing pages). Revisit when moving the main site here.
+- Facebook retargeting ads still land on medient.co.uk (owner's choice, Nov 2026); move them to these pages when the whole site moves here.
 - Future: migrate the rest of medient.co.uk from WordPress into this repo.
