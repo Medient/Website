@@ -14,12 +14,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Rubik:wght@600;700&display=swap" rel="stylesheet">
 
-<!-- Google Ads conversion: replace AW-XXXXXXXXXX/YYYYYYYYYY with the lead conversion action, then uncomment.
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
-<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','AW-XXXXXXXXXX');
-var lead={};try{lead=JSON.parse(sessionStorage.getItem('lp_lead')||'{}')}catch(e){}
-gtag('event','conversion',{send_to:'AW-XXXXXXXXXX/YYYYYYYYYY',value:({Hot:100,Warm:40,Nurture:10})[lead.tier]||10,currency:'GBP'});</script>
--->
+<!-- Tracking: GTM, Clarity and cookie consent. IDs live in /assets/tracking.js -->
+<script src="/assets/tracking.js"></script>
+<script>
+// Confirms the lead to GTM (Google Ads conversion / GA4 key event fire on this), then forgets the contact details.
+(function(){ var lead=null; try{ lead=JSON.parse(sessionStorage.getItem('lp_lead')||'null'); }catch(e){}
+  if(!lead) return; var ev={event:'lead_thank_you'}; for(var k in lead) ev[k]=lead[k]; dataLayer.push(ev);
+  try{ delete lead.user_data; sessionStorage.setItem('lp_lead',JSON.stringify(lead)); }catch(e){} })();
+</script>
 
 <style>
 :root{--brand:#005A82;--brand-dark:#063A55;--brand-tint:#EAF3F8;--teal:#47C0B7;--ink:#0B2A3C;--muted:#5E6677;--line:#E3E6EC;--wa:#1FA855}
