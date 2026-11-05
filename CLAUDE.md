@@ -13,6 +13,7 @@ Static landing pages for Medient (helps UK students study medicine and dentistry
 | `/<course>/thank-you` | Shown after the form; holds the (still commented-out) Google Ads conversion tag |
 | `assets/flags/` | SVG flags (pl, sk, ro, bg, ge) |
 | `assets/brand/` | Favicons and link-preview images (`og-medicine.jpg`, `og-dentistry.jpg`) |
+| `assets/tracking.js` | Shared tracking: GTM + Clarity IDs, Consent Mode v2 cookie banner, `medientTrack()` helper. Loaded in every page head |
 | `google-apps-script/Code.gs` | Copy of the form handler that runs in Google Apps Script |
 | `CNAME` | `apply.medient.co.uk`. Don't delete it, or the custom domain disconnects |
 
@@ -35,6 +36,14 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - **Disqualifiers** (no contact step, never a lead): budget under the minimum (medicine £5k, dentistry £4k) or "I'd need a loan".
 - Before publishing any form change, test end to end at desktop and mobile widths and with reduced motion: answers, scoring, UTMs/gclid, the disqualify exit, and the redirect to thank-you.
 
+## Tracking
+- One file, `assets/tracking.js`, holds `GTM_ID` and `CLARITY_ID`. GA4, Google Ads conversions/remarketing and Meta are configured **inside GTM** by the agency (Bobo, Evan), not hard-coded in pages.
+- Consent Mode v2: everything denied by default (UK GDPR/PECR); banner with equal-weight Accept all / Reject all; choice in localStorage `medient_consent_v1`; footer "Cookie settings" reopens it. Clarity only loads after consent.
+- dataLayer events: `form_start`, `form_step`, `form_disqualified`, `generate_lead` (course, country, lead_tier, lead_score, value GBP, lead_id, `user_data` for enhanced conversions), `lead_thank_you` (thank-you page; then user_data is wiped from sessionStorage), `cta_click`, `whatsapp_click`, `cookie_consent_update`.
+- Use absolute asset paths (`/assets/...`) so pages work at any depth, including `/preview/`.
+- Offline conversions: every lead is also written to Bobo's **Offline Conversion Tracker** (Conversion Time, name, email, phone as 44…, GCLID, Course, Country; "Qualified?" filled by the team; column I is a formula, never written) and the **Lead Tracker** (Date, Full Name, Looking for, notes). Sheet ids are at the top of `Code.gs`; apply@ needs Editor access.
+- Form captures first_name + last_name (the script also builds `name` = full name).
+
 ## Design system (approved by the owner; don't drift from it)
 - **Font:** Rubik only (Google Fonts), matching the Medient Student Agreement.
 - **Colours:** petrol `#11587B` (headings), deep `#0A3F5A` / `#072F44`, teal `#54BDB4` (accent), teal text `#157A73`, red `#EC3050` (buttons/CTAs), gold `#F6BB32` (offers), text `#333333`, muted `#6A6A6A`, background `#FAFAFA`.
@@ -55,7 +64,7 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - Medicine and dentistry pages share the same design. A design change to one should be mirrored to the other, using the dentistry wording (GDC, £4k, Sep/Oct intakes, 5–6 yrs, DMD).
 
 ## Open items
-- Google Ads conversion ID/label not yet added (thank-you pages, commented block).
+- GTM container ID and Clarity ID to be added in `assets/tracking.js` (from Bobo / Medient).
 - Google Ads final URLs should point at apply.medient.co.uk (the github.io URLs redirect).
 - Pages are `noindex` (ad landing pages). Revisit when moving the main site here.
 - Future: migrate the rest of medient.co.uk from WordPress into this repo.

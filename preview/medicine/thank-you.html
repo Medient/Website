@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="/assets/brand/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/icon-192.png">
+<link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+<title>Thank You | Medient</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#063A55">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Rubik:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- Tracking: GTM, Clarity and cookie consent. IDs live in /assets/tracking.js -->
+<script src="/assets/tracking.js"></script>
+<script>
+// Confirms the lead to GTM (Google Ads conversion / GA4 key event fire on this), then forgets the contact details.
+(function(){ var lead=null; try{ lead=JSON.parse(sessionStorage.getItem('lp_lead')||'null'); }catch(e){}
+  if(!lead) return; var ev={event:'lead_thank_you'}; for(var k in lead) ev[k]=lead[k]; dataLayer.push(ev);
+  try{ delete lead.user_data; sessionStorage.setItem('lp_lead',JSON.stringify(lead)); }catch(e){} })();
+</script>
+
+<style>
+:root{--brand:#005A82;--brand-dark:#063A55;--brand-tint:#EAF3F8;--teal:#47C0B7;--ink:#0B2A3C;--muted:#5E6677;--line:#E3E6EC;--wa:#1FA855}
+*{box-sizing:border-box}
+body{margin:0;font-family:Karla,system-ui,sans-serif;font-size:18px;line-height:1.6;color:#3B4458;background:linear-gradient(180deg,#fff 0%,var(--brand-tint) 100%);min-height:100vh}
+header{border-bottom:1px solid var(--line);background:#fff}
+header .wrap{height:68px;display:flex;align-items:center}
+header img{height:38px;width:auto}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+main{padding:64px 0}
+.card{background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(20,33,61,.12);padding:44px 36px;text-align:center;border-top:5px solid var(--teal)}
+.tick{width:72px;height:72px;border-radius:50%;background:#E6F6F4;color:#157A73;display:grid;place-items:center;margin:0 auto 20px}
+.tick svg{width:36px;height:36px}
+h1{font-family:Rubik,sans-serif;color:var(--ink);font-size:clamp(1.8rem,4vw,2.4rem);margin:0 0 .4em;line-height:1.15}
+ol{text-align:left;max-width:520px;margin:28px auto;padding:0;list-style:none;counter-reset:s}
+ol li{counter-increment:s;display:flex;gap:14px;margin-bottom:16px}
+ol li::before{content:counter(s);flex:none;width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;font-family:Rubik,sans-serif;font-weight:700;display:grid;place-items:center}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:Rubik,sans-serif;font-weight:600;padding:15px 26px;border-radius:10px;text-decoration:none;background:var(--wa);color:#fff}
+.small{font-size:.9rem;color:var(--muted);margin-top:18px}
+</style>
+</head>
+<body>
+<header><div class="wrap"><a href="./"><img src="https://medient.co.uk/wp-content/uploads/2022/09/MedientWebsiteLogoOriginal.png" alt="Medient" width="210" height="54"></a></div></header>
+<main><div class="wrap"><div class="card">
+  <div class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg></div>
+  <h1>Your free consultation is requested</h1>
+  <p>Thanks! Your answers are with your Medient advisor. Here's what happens next:</p>
+  <ol>
+    <li><span>Your advisor will be in touch <strong>within one working day</strong> to confirm a time for your free 30-minute consultation.</span></li>
+    <li><span>Have your <strong>passport</strong> and <strong>GCSE / A-level transcripts</strong> handy so we can check your eligibility on the call.</span></li>
+    <li><span>On the call you'll get your university shortlist, exact costs and your timeline to start. Parents are welcome to join.</span></li>
+  </ol>
+  <p><strong>Can't wait?</strong> Message us now and we'll pick it up straight away.</p>
+  <a class="btn" href="https://wa.me/447418605414?text=Hi%20Medient%2C%20I%20just%20booked%20a%20free%20consultation" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  <p class="small">Didn't mean to submit? Just reply to our first email and we'll remove your details.</p>
+</div></div></main>
+</body>
+</html>
