@@ -41,7 +41,7 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - Consent Mode v2: everything denied by default (UK GDPR/PECR); banner with equal-weight Accept all / Reject all; choice in localStorage `medient_consent_v1`; footer "Cookie settings" reopens it. Clarity only loads after consent.
 - dataLayer events: `form_start`, `form_step`, `form_disqualified`, `generate_lead` (course, country, lead_tier, lead_score, value GBP, lead_id, `user_data` for enhanced conversions), `lead_thank_you` (thank-you page; then user_data is wiped from sessionStorage), `cta_click`, `whatsapp_click`, `cookie_consent_update`.
 - Use absolute asset paths (`/assets/...`) so pages work at any depth, including `/preview/`.
-- Offline conversions: every lead is also written to Bobo's **Offline Conversion Tracker** (Conversion Time, name, email, phone as 44…, GCLID, Course, Country; "Qualified?" filled by the team; column I is a formula, never written) and the **Lead Tracker** (Date, Full Name, Looking for, notes). Sheet ids are at the top of `Code.gs`; apply@ needs Editor access.
+- Offline conversions: every lead is also written to Bobo's **Offline Conversion Tracker** (Conversion Time, name, email, phone without +44 or leading 0 (header "Phone (+44)"), GCLID, Course, Country; "Qualified?" filled by the team; column I is a formula, never written) and the **Lead Tracker** (Date, Full Name, Looking for, notes). Sheet ids are at the top of `Code.gs`; apply@ needs Editor access.
 - Form captures first_name + last_name (the script also builds `name` = full name).
 
 ## Design system (approved by the owner; don't drift from it)
@@ -64,6 +64,7 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 - Medicine and dentistry pages share the same design. A design change to one should be mirrored to the other, using the dentistry wording (GDC, £4k, Sep/Oct intakes, 5–6 yrs, DMD).
 
 ## Open items
+- GTM version 25 (published 5 Nov 2026) added the landing-page items, all prefixed `LP - `: trigger `LP - generate_lead` (custom event `generate_lead`, Page Hostname equals apply.medient.co.uk), tags `LP - Google Ads Lead` (conversion label RPNcCIaj_JgZEJfAh7Eo, value + lead_id as transaction ID, GBP), `LP - GA4 generate_lead`, `LP - Ads User-provided Data` (email + phone only; Google needs postcode + country to accept names). Roll back to version 24 if ever needed. Test with GTM Preview in your own browser.
 - GTM container is **GTM-TRWMG8D** (shared with www.medient.co.uk; Google Ads AW-10840301591, GA4 G-8TH97K98B0). Clarity ID still to add.
 - Google Ads final URLs should point at apply.medient.co.uk (the github.io URLs redirect).
 - Pages are `noindex` (ad landing pages). Revisit when moving the main site here.

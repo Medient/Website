@@ -176,11 +176,12 @@ function nextRow_(sheet) {
 
 // UK mobile → 44XXXXXXXXXX (the format already used in the offline sheet).
 function ukPhone_(p) {
+  // Match the existing Offline Tracker rows: the header is "Phone (+44)", so the
+  // number goes in without the country code or leading 0 (e.g. 7939033587).
   var d = String(p || '').replace(/\D/g, '');
   if (d.indexOf('00') === 0) d = d.slice(2);
-  if (d.indexOf('44') === 0) return d;
-  if (d.indexOf('0') === 0) return '44' + d.slice(1);
-  if (d.length === 10 && d.charAt(0) === '7') return '44' + d;
+  if (d.indexOf('44') === 0 && d.length > 10) d = d.slice(2);
+  if (d.indexOf('0') === 0) d = d.slice(1);
   return d;
 }
 
@@ -201,7 +202,7 @@ function addToLeadTracker_(d, when) {
 function addToOfflineTracker_(d, when) {
   if (!OFFLINE_TRACKER.id) return;
   var sh = tab_(OFFLINE_TRACKER), r = nextRow_(sh);
-  sh.getRange(r, 1).setValue(when);
+  sh.getRange(r, 1).setValue(when).setNumberFormat('M/d/yyyy h:mm:ss am/pm');
   sh.getRange(r, 2, 1, 6).setNumberFormat('@').setValues([[
     d.name, String(d.email || '').trim().toLowerCase(), ukPhone_(d.phone), d.gclid || '', d.course || '', d.country || ''
   ]]);
