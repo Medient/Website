@@ -66,6 +66,7 @@ Each page is one self-contained HTML file (CSS and JS inline, no build step, no 
 
 ## Open items
 - GTM version 25 (published 5 Nov 2026) added the landing-page items, all prefixed `LP - `: trigger `LP - generate_lead` (custom event `generate_lead`, Page Hostname equals apply.medient.co.uk), tags `LP - Google Ads Lead` (conversion label RPNcCIaj_JgZEJfAh7Eo, value + lead_id as transaction ID, GBP), `LP - GA4 generate_lead`, `LP - Ads User-provided Data` (email + phone only; Google needs postcode + country to accept names). Roll back to version 24 if ever needed. Test with GTM Preview in your own browser.
+- GTM version 26 (7 Nov 2026): tag `Clarity - main site (privacy mode)` (Custom HTML, Clarity z921tuu5ej with consentv2 denied, so no cookies) on trigger `All Pages - main site only` (Page View, Page Hostname does not contain apply.medient), so the WordPress pages are recorded and the landing pages don't load Clarity twice. medient.co.uk has **no cookie banner** yet (GA, Ads and the Meta pixel fire without consent); once a banner with Consent Mode exists, switch this tag to grant consent after the visitor accepts.
 - GTM container is **GTM-TRWMG8D** (shared with www.medient.co.uk; Google Ads AW-10840301591, GA4 G-8TH97K98B0).
 - Google Ads final URLs should point at apply.medient.co.uk (the github.io URLs redirect).
 - Pages are `noindex` (ad landing pages). Revisit when moving the main site here.
