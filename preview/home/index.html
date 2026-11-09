@@ -1136,7 +1136,7 @@ footer.site a:hover{color:#fff;text-decoration:underline}
     <div data-reveal>
       <span class="label"><svg class="pulse" viewBox="0 0 30 14" aria-hidden="true"><path d="M0 7h8l2-4 3 9 3-11 3 8 2-2h9"/></svg>Free eligibility check</span>
       <h2>See which universities you qualify for</h2>
-      <p class="lede">Five one-tap questions, then book your free 30-minute consultation. No obligation.</p>
+      <p class="lede">Six one-tap questions, then book your free 30-minute consultation. No obligation.</p>
       <ul class="apply-points">
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>A shortlist of universities that fit your grades and budget</li>
         <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Exact costs: tuition, living and our fee</li>
@@ -1146,8 +1146,8 @@ footer.site a:hover{color:#fff;text-decoration:underline}
     <div class="form-card" id="apply" data-reveal style="--i:1">
       <h2>Free eligibility check</h2>
       <p class="sub" id="formSub"><b><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M10 2h4"/></svg>60 seconds.</b> 6 one-tap questions, then book your free consultation.</p>
-      <div class="progress" aria-hidden="true"><span id="bar" style="width:20%"></span></div>
-      <div class="step-row"><p class="step-count" id="stepCount">Question 1 of 5</p><button type="button" class="btn-back" id="backBtn" hidden>← Back</button></div>
+      <div class="progress" aria-hidden="true"><span id="bar" style="width:16.6%"></span></div>
+      <div class="step-row"><p class="step-count" id="stepCount">Question 1 of 6</p><button type="button" class="btn-back" id="backBtn" hidden>← Back</button></div>
       <!-- Submissions go to the Google Apps Script web app (see google-apps-script/Code.gs). The /exec URL is in action. -->
       <form name="home-enquiry" method="POST" action="https://script.google.com/macros/s/AKfycbwUsrG8VbFzyYCco5KY6CphooZs6Cq-osTteWWpO4I9ZXHbCLZzGxRr1b5BpxONpZLJ/exec" id="leadForm" novalidate>
         <p class="hidden"><label>Leave this empty: <input name="company" tabindex="-1" autocomplete="off"></label></p>
@@ -1164,6 +1164,18 @@ footer.site a:hover{color:#fff;text-decoration:underline}
 
 
         <fieldset class="qstep" data-step="2">
+          <legend>Which country interests you most?</legend>
+          <div class="choices c2 flags-q">
+            <label class="choice"><input type="radio" name="country" value="Georgia" required><span><img src="/assets/flags/ge.svg" alt="" width="24" height="16">Georgia</span></label>
+            <label class="choice"><input type="radio" name="country" value="Bulgaria"><span><img src="/assets/flags/bg.svg" alt="" width="24" height="14">Bulgaria</span></label>
+            <label class="choice"><input type="radio" name="country" value="Slovakia"><span><img src="/assets/flags/sk.svg" alt="" width="24" height="16">Slovakia</span></label>
+            <label class="choice"><input type="radio" name="country" value="Poland"><span><img src="/assets/flags/pl.svg" alt="" width="24" height="15">Poland</span></label>
+            <label class="choice"><input type="radio" name="country" value="Romania"><span><img src="/assets/flags/ro.svg" alt="" width="24" height="16">Romania</span></label>
+            <label class="choice"><input type="radio" name="country" value="Not sure yet"><span><i class="q" aria-hidden="true">?</i>Not sure yet</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="qstep" data-step="3">
           <legend>What passport do you hold?</legend>
           <p class="hint">This affects visas and which universities are open to you.</p>
           <div class="choices c3">
@@ -1173,7 +1185,7 @@ footer.site a:hover{color:#fff;text-decoration:underline}
           </div>
         </fieldset>
 
-        <fieldset class="qstep" data-step="3">
+        <fieldset class="qstep" data-step="4">
           <legend>When would you like to start?</legend>
           <div class="choices c2">
             <label class="choice"><input type="radio" name="start" value="ASAP / next intake" required data-score="3"><span>As soon as possible <small>Next intake</small></span></label>
@@ -1184,7 +1196,7 @@ footer.site a:hover{color:#fff;text-decoration:underline}
         </fieldset>
 
         <!-- Budget: the lowest band depends on the course (Medicine £5k, Dentistry £4k); under it shows a polite exit. -->
-        <fieldset class="qstep" data-step="4">
+        <fieldset class="qstep" data-step="5">
           <legend>What yearly tuition budget can you commit to?</legend>
           <p class="hint">So we only suggest universities that fit your budget.</p>
           <div class="choices c2">
@@ -1195,7 +1207,7 @@ footer.site a:hover{color:#fff;text-decoration:underline}
           </div>
         </fieldset>
 
-        <fieldset class="qstep" data-step="5">
+        <fieldset class="qstep" data-step="6">
           <legend>Who will be funding the course?</legend>
           <div class="choices c2">
             <label class="choice"><input type="radio" name="funding" value="Parents / family" required data-score="3"><span>Parents or family</span></label>
@@ -1206,7 +1218,7 @@ footer.site a:hover{color:#fff;text-decoration:underline}
           <p class="hint small">Good to know: UK Student Finance doesn't cover full degrees abroad.</p>
         </fieldset>
 
-        <fieldset class="qstep" data-step="6">
+        <fieldset class="qstep" data-step="7">
           <legend id="resultHead">Good news, you look like a strong fit</legend>
           <p class="hint">Where should we send your free consultation details?</p>
           <div class="row2 names">
@@ -1380,7 +1392,7 @@ footer.site a:hover{color:#fff;text-decoration:underline}
     medientTrack('form_disqualified',{course:course(),reason:reason,form:'home'});
   }
   back.addEventListener('click',function(){ show(cur-1); });
-  f.addEventListener('input',function(e){ if(e.target.closest('[data-step="6"]')) err.textContent=''; });
+  f.addEventListener('input',function(e){ if(e.target.closest('[data-step="7"]')) err.textContent=''; });
   document.getElementById('dqBack').addEventListener('click',function(){ disqualified().checked=false; show(cur); });
   // A pre-selected answer (from a destination card) doesn't fire 'change' when tapped again, so a click moves on too.
   var changed=false;
@@ -1404,7 +1416,7 @@ footer.site a:hover{color:#fff;text-decoration:underline}
     if(bad.length){ err.textContent='Please add your '+bad.map(function(el){return ({first_name:'first name',last_name:'last name',phone:'mobile number',email:'email'})[el.name]||el.name}).join(', ')+'.'; bad[0].focus(); return; }
     var c=course()||'Medicine', tier=score();
     var phone=f.elements.phone.value.replace(/[^\d+]/g,''); if(/^0/.test(phone)) phone='+44'+phone.slice(1); else if(/^44/.test(phone)) phone='+'+phone; else if(/^7\d{9}$/.test(phone)) phone='+44'+phone;
-    var lead={course:c,country:'',lead_tier:tier,lead_score:+f.elements.lead_score.value,
+    var lead={course:c,country:(f.querySelector('input[name=country]:checked')||{}).value||'',lead_tier:tier,lead_score:+f.elements.lead_score.value,
       value:({Hot:100,Warm:40,Nurture:10})[tier]||10,currency:'GBP',lead_id:(c==='Dentistry'?'den-':'med-')+Date.now().toString(36),
       user_data:{email:f.elements.email.value.trim().toLowerCase(),phone_number:phone,address:{first_name:f.elements.first_name.value.trim(),last_name:f.elements.last_name.value.trim(),country:'GB'}}};
     try{sessionStorage.setItem('lp_lead',JSON.stringify(lead))}catch(x){}
@@ -1425,6 +1437,13 @@ footer.site a:hover{color:#fff;text-decoration:underline}
       });
   });
 
+
+  // Destination cards pre-answer the country question (tapping it again still moves on).
+  [].forEach.call(document.querySelectorAll('[data-country]'),function(a){
+    a.addEventListener('click',function(){
+      var r=f.querySelector('input[name=country][value="'+a.dataset.country+'"]'); if(r) r.checked=true;
+    });
+  });
 
   // Hide the sticky mobile CTA while the form is on screen.
   var mcta=document.querySelector('.mcta');
