@@ -628,7 +628,7 @@ header .wrap{height:76px}
 .logo img{height:42px;width:auto;max-width:none}
 .nav{display:flex;align-items:center;gap:2px;margin-left:auto}
 .nav-item{position:relative}
-.nav-link{display:flex;align-items:center;gap:4px;padding:10px 11px;border-radius:9px;border:0;background:none;font:500 .93rem/1.2 Rubik,sans-serif;color:var(--petrol);text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
+.nav-link{display:flex;align-items:center;gap:3px;padding:10px 8px;border-radius:9px;border:0;background:none;font:500 .9rem/1.2 Rubik,sans-serif;color:var(--petrol);text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .2s,color .2s}
 .nav-link:hover,.nav-item:focus-within > .nav-link{background:var(--tint)}
 .nav-link .chev{width:14px;height:14px;transition:transform .3s var(--ease)}
 .nav-item:hover .chev,.nav-item:focus-within .chev{transform:rotate(180deg)}
@@ -642,14 +642,15 @@ header .wrap{height:76px}
 .dropdown .dd-ic{flex:none;width:34px;height:34px;border-radius:10px;background:var(--teal-tint);color:var(--teal-text);display:grid;place-items:center}
 .dropdown .dd-ic svg{width:18px;height:18px}
 .dropdown .dd-more{border-top:1px solid var(--line);margin-top:6px;padding-top:12px;border-radius:0 0 10px 10px}
-.head-actions{gap:14px;margin-left:12px}
+.head-actions{gap:10px;margin-left:10px}
+header .head-actions .btn{padding:13px 18px}
 .head-wa{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#1FA855;background:#EAF7EF;transition:transform .3s var(--ease)}
 .head-wa:hover{transform:scale(1.08)}
 .head-wa svg{width:22px;height:22px}
 .burger{display:none;width:44px;height:44px;border:0;border-radius:10px;background:var(--tint);color:var(--petrol);cursor:pointer;place-items:center}
 .burger svg{width:22px;height:22px}
 .mnav{display:none}
-@media (max-width:1180px){
+@media (max-width:1260px){
   .nav,.head-actions .btn{display:none}
   .burger{display:grid}
   .mnav{display:block;position:fixed;inset:76px 0 0;background:#fff;z-index:49;overflow:auto;padding:12px 18px 120px;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .25s,transform .3s var(--ease),visibility .25s}
